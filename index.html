@@ -1,0 +1,1768 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Body IRONMAN di Edoardo</title>
+<meta name="description" content="Compra uno spazio sul body da gara del mio IRONMAN: scegli la posizione, carica il logo e guardalo in 3D.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Big+Shoulders+Display:wght@700;800;900&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<meta property="og:title" content="Body IRONMAN di Edoardo">
+<meta property="og:description" content="Compra uno spazio sul body da gara del mio IRONMAN: scegli la posizione, carica il logo e guardalo in 3D.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="it_IT">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23FF5B1F'/%3E%3Ctext x='32' y='43' font-family='Arial Black,Arial' font-weight='900' font-size='28' text-anchor='middle' fill='%23151515'%3EEG%3C/text%3E%3C/svg%3E">
+<style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style>
+</head>
+<body>
+<style>
+/* Layout: header → hero (tesi + barra percorso e spazi) → configuratore (stage 3D | pannello pettorale) → come funziona → cosa ottieni → la gara → FAQ → contatti */
+:root{
+  --bg:#ECEFF1;
+  --surface:#FFFFFF;
+  --sunk:#E0E5E9;
+  --ink:#0F1A25;
+  --muted:#566472;
+  --line:#C8D0D7;
+  --accent:#FF5B1F;
+  --accent-ink:#151515;
+  --accent-text:#BF3E0A;
+  --accent-soft:rgba(255,91,31,.14);
+  --swim:#2E6BF0;
+  --ok:#16815A;
+  --bib:#FBFBF8;
+  --bib-ink:#0F1A25;
+  --bib-line:#D9DDD8;
+  --stage-a:#E9EEF2;
+  --stage-b:#B9C4CE;
+  --hot-ring:#FFFFFF;
+  --shadow:0 1px 2px rgba(15,26,37,.06),0 10px 30px rgba(15,26,37,.09);
+  --f-display:"Big Shoulders Display","Arial Narrow","Helvetica Neue",Impact,sans-serif;
+  --f-body:"Barlow",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0B1014;--surface:#131A20;--sunk:#0A0E11;--ink:#E5EBF0;--muted:#8F9EAC;--line:#24303A;
+    --accent:#FF6A2E;--accent-ink:#151515;--accent-text:#FF8B5A;--accent-soft:rgba(255,106,46,.16);
+    --swim:#6A97FF;--ok:#3BC48A;--bib:#F2F3EE;--bib-ink:#0F1A25;--bib-line:#D3D7D1;
+    --stage-a:#1F2A33;--stage-b:#0C1216;--hot-ring:#0B1014;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 12px 34px rgba(0,0,0,.4);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0B1014;--surface:#131A20;--sunk:#0A0E11;--ink:#E5EBF0;--muted:#8F9EAC;--line:#24303A;
+  --accent:#FF6A2E;--accent-ink:#151515;--accent-text:#FF8B5A;--accent-soft:rgba(255,106,46,.16);
+  --swim:#6A97FF;--ok:#3BC48A;--bib:#F2F3EE;--bib-ink:#0F1A25;--bib-line:#D3D7D1;
+  --stage-a:#1F2A33;--stage-b:#0C1216;--hot-ring:#0B1014;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 12px 34px rgba(0,0,0,.4);
+  color-scheme:dark;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+h1,h2,h3{font-family:var(--f-display);text-transform:uppercase;line-height:.92;margin:0;text-wrap:balance;letter-spacing:.005em}
+p{margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:4px}
+.wrap{max-width:1280px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+@media (min-width:760px){.wrap{padding-left:max(32px,env(safe-area-inset-left,0px));padding-right:max(32px,env(safe-area-inset-right,0px))}}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);font-weight:500}
+.mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.muted{color:var(--muted)}
+
+/* Buttons */
+.btn{--h:48px;display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:var(--h);padding:0 22px;border-radius:999px;border:1.5px solid transparent;font:600 16px/1 var(--f-body);text-decoration:none;cursor:pointer;transition:transform .15s ease,background-color .15s ease,border-color .15s ease;white-space:nowrap}
+.btn:active{transform:translateY(1px)}
+.btn.primary{background:var(--accent);color:var(--accent-ink)}
+.btn.primary:hover{background:color-mix(in srgb,var(--accent) 88%,var(--ink))}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn.ghost:hover{border-color:var(--ink)}
+.btn.small{--h:40px;padding:0 16px;font-size:15px}
+.btn.block{width:100%}
+.btn[disabled]{opacity:.5;cursor:not-allowed}
+.linkbtn{background:none;border:0;padding:6px 0;font:600 15px var(--f-body);color:var(--muted);cursor:pointer;display:inline-flex;gap:8px;align-items:center}
+.linkbtn:hover{color:var(--ink)}
+
+/* Header */
+.site-head{padding-block:18px}
+.head-row{display:flex;align-items:center;gap:24px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;margin-right:auto;min-width:0}
+.brand-mark{width:42px;height:42px;display:grid;place-items:center;background:var(--bib);color:var(--bib-ink);border:1px solid var(--bib-line);border-radius:6px;font:900 20px/1 var(--f-display);letter-spacing:.02em;position:relative;flex:none}
+.brand-mark::before,.brand-mark::after{content:"";position:absolute;top:4px;width:4px;height:4px;border-radius:50%;background:var(--line)}
+.brand-mark::before{left:4px}.brand-mark::after{right:4px}
+.brand-text{display:flex;flex-direction:column;line-height:1.15;min-width:0}
+.brand-text strong{font-weight:700;font-size:16px}
+.brand-text span{font-size:13px;color:var(--muted)}
+.nav{display:flex;gap:26px}
+.nav a{text-decoration:none;font-weight:600;font-size:15px;color:var(--muted)}
+.nav a:hover{color:var(--ink)}
+@media (max-width:860px){.nav{display:none}}
+
+/* Hero */
+.hero{padding-block:28px 40px}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:48px;align-items:end}
+.hero h1{font-size:clamp(50px,8.4vw,118px);font-weight:900;margin-top:14px}
+.hero h1 .hl{color:var(--accent-text);display:block}
+.lead{font-size:clamp(17px,1.5vw,19px);max-width:56ch;margin-top:22px;color:var(--ink)}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.hero-side{background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);display:grid}
+.hs-block{padding:20px 22px;display:grid;gap:14px}
+.hs-block+.hs-block{border-top:1px solid var(--line)}
+.hs-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.hs-head .mono{font-size:14px;color:var(--ink)}
+.split-bar{display:flex;height:12px;border-radius:3px;overflow:hidden;gap:2px}
+.split-bar span{display:block;min-width:4px}
+.s-swim{background:var(--swim)}.s-bike{background:var(--ink)}.s-run{background:var(--accent)}
+.split-legend{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,auto);justify-content:space-between;gap:8px;font-size:14px}
+.split-legend li{display:grid;gap:2px}
+.split-legend b{font:800 26px/1 var(--f-display)}
+.split-legend b small{font:500 13px var(--f-mono);margin-left:3px;color:var(--muted)}
+.split-legend .dot{display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:6px;vertical-align:1px}
+.countdown{display:flex;align-items:baseline;gap:12px}
+.countdown b{font:900 clamp(56px,6vw,76px)/.8 var(--f-display);font-variant-numeric:tabular-nums;color:var(--accent-text)}
+.countdown span{font-weight:600;font-size:17px}
+.fund-bar{display:flex;gap:3px;height:22px}
+.fund-bar span{flex:var(--w) 1 0;border-radius:3px;background:var(--sunk);border:1px solid var(--line);position:relative}
+.fund-bar span.sold{background:var(--ink);border-color:var(--ink)}
+.fund-bar span.held{background:repeating-linear-gradient(135deg,var(--accent) 0 4px,transparent 4px 8px);border-color:var(--accent)}
+.fund-total{font-size:15px;color:var(--muted)}
+.fund-total strong{font:800 30px/1 var(--f-display);color:var(--ink);margin-right:4px}
+@media (max-width:900px){.hero-grid{grid-template-columns:1fr;gap:32px}}
+
+/* Section heads */
+.sec{padding-block:56px}
+.sec-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:16px 32px;margin-bottom:28px}
+.sec-head h2{font-size:clamp(36px,5vw,64px);font-weight:900;margin-top:10px}
+.sec-head p.muted{max-width:46ch}
+
+/* Configurator */
+.config-sec{padding-block:24px 56px}
+.config{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:20px;align-items:start}
+@media (max-width:980px){.config{grid-template-columns:1fr}}
+.stage{position:relative;height:clamp(540px,78vh,780px);border-radius:16px;overflow:hidden;background:radial-gradient(120% 90% at 50% 30%,var(--stage-a) 0%,var(--stage-b) 100%);border:1px solid var(--line);position:sticky;top:16px;isolation:isolate}
+@media (max-width:980px){.stage{position:relative;top:auto;height:min(560px,72svh);min-height:440px}}
+.stage canvas{position:absolute;inset:0;width:100%;height:100%;display:block;cursor:grab;touch-action:none}
+.stage canvas:active{cursor:grabbing}
+.stage canvas.pointing{cursor:pointer}
+.hotspots{position:absolute;inset:0;pointer-events:none;z-index:2}
+.hotspot{position:absolute;left:0;top:0;width:36px;height:36px;margin:-18px 0 0 -18px;border-radius:50%;border:2.5px solid var(--hot-ring);background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;cursor:pointer;pointer-events:auto;padding:0;box-shadow:0 4px 14px rgba(0,0,0,.28);transition:opacity .18s ease}
+.hotspot svg{width:16px;height:16px;transition:transform .2s ease}
+.hotspot::after{content:"";position:absolute;inset:-7px;border-radius:50%;border:2px solid var(--accent);opacity:0;animation:pulse 2.4s ease-out infinite}
+.hotspot:hover svg,.hotspot.is-hot svg{transform:rotate(90deg) scale(1.1)}
+.hotspot.is-sel{visibility:hidden}
+@media (max-width:560px){.hotspot{width:30px;height:30px;margin:-15px 0 0 -15px;border-width:2px}.hotspot svg{width:13px;height:13px}}
+.hotspot.off{pointer-events:none}
+.hotspot .tip{position:absolute;left:50%;bottom:calc(100% + 10px);transform:translateX(-50%);background:var(--ink);color:var(--bg);font:600 13px/1.2 var(--f-body);padding:7px 10px;border-radius:8px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .15s ease}
+.hotspot .tip b{font-family:var(--f-mono);font-weight:500;margin-left:6px;color:var(--accent)}
+.hotspot:hover .tip,.hotspot:focus-visible .tip,.hotspot.is-hot .tip{opacity:1}
+@keyframes pulse{0%{transform:scale(.7);opacity:.7}70%,100%{transform:scale(1.25);opacity:0}}
+.stage-hint,.stage-legend{position:absolute;top:16px;z-index:3;display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--muted);background:color-mix(in srgb,var(--surface) 78%,transparent);backdrop-filter:blur(6px);padding:7px 12px;border-radius:999px;border:1px solid var(--line)}
+.stage-hint{left:16px}
+.stage-legend{right:16px}
+.stage-hint svg{width:18px;height:18px}
+.lg-plus{width:18px;height:18px;border-radius:50%;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;font:700 14px/1 var(--f-body)}
+.stage-tools{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);z-index:3;display:flex;align-items:center;gap:4px;padding:5px;border-radius:999px;background:color-mix(in srgb,var(--surface) 86%,transparent);backdrop-filter:blur(8px);border:1px solid var(--line);box-shadow:var(--shadow);max-width:calc(100% - 24px)}
+.stage-tools button{height:36px;min-width:36px;padding:0 14px;border:0;border-radius:999px;background:transparent;color:var(--ink);font:600 14px var(--f-body);cursor:pointer;display:grid;place-items:center}
+.stage-tools button:hover{background:var(--sunk)}
+.stage-tools button.on,.stage-tools button[aria-pressed="true"]{background:var(--ink);color:var(--surface)}
+.stage-tools button.icon{padding:0 9px}
+.stage-tools svg{width:18px;height:18px}
+.stage-tools .sep{width:1px;height:20px;background:var(--line);margin:0 4px}
+.stage-loading{position:absolute;inset:0;z-index:4;display:grid;place-content:center;justify-items:center;gap:14px;font-weight:600;color:var(--muted);transition:opacity .4s ease}
+.stage-loading.done{opacity:0;pointer-events:none}
+.spinner{width:34px;height:34px;border-radius:50%;border:3px solid var(--line);border-top-color:var(--accent);animation:spin .9s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.no3d{position:absolute;inset:0;display:grid;place-content:center;text-align:center;padding:24px;color:var(--muted);z-index:4}
+@media (max-width:560px){.stage-hint span{display:none}.stage-legend{display:none}.stage-tools button{padding:0 11px}}
+
+/* Panel */
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px;display:grid;gap:18px;min-width:0;scroll-margin-top:16px}
+.panel h2{font-size:clamp(30px,3vw,40px);font-weight:900}
+.panel h3{font-size:26px;font-weight:800}
+.p-head{display:grid;gap:8px}
+.try{display:flex;align-items:center;gap:14px;padding:14px;border-radius:12px;background:var(--sunk);border:1px dashed var(--line)}
+.try.has{border-style:solid}
+.try-thumb{width:52px;height:52px;border-radius:8px;flex:none;display:grid;place-items:center;background:var(--surface);border:1px solid var(--line);overflow:hidden}
+.try-thumb img{max-width:80%;max-height:80%;object-fit:contain}
+.try-thumb svg{width:22px;height:22px;color:var(--muted)}
+.try-text{min-width:0;flex:1;font-size:14px;line-height:1.4}
+.try-text strong{display:block;font-size:15px}
+.try-text span{color:var(--muted)}
+.filebtn{position:relative;overflow:hidden}
+.filebtn input{position:absolute;inset:0;opacity:0;cursor:pointer}
+.groups{display:grid;gap:16px}
+.group h4{margin:0 0 6px;font:500 12px var(--f-mono);letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.rows{display:grid;gap:6px}
+.row{display:grid;grid-template-columns:44px minmax(0,1fr) auto;align-items:center;gap:12px;width:100%;text-align:left;padding:8px 12px 8px 8px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer;font:inherit;transition:border-color .15s ease,background-color .15s ease}
+.row:hover,.row.is-hot{border-color:var(--ink)}
+.row.is-sold{background:var(--sunk);cursor:pointer}
+.row-num{height:36px;border-radius:6px;background:var(--bib);color:var(--bib-ink);border:1px solid var(--bib-line);display:grid;place-items:center;font:900 19px/1 var(--f-display)}
+.row.is-sold .row-num{opacity:.6}
+.row-main{min-width:0;display:grid;line-height:1.25}
+.row-name{font-weight:600;font-size:16px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.row-size{font:400 13px var(--f-mono);color:var(--muted)}
+.row-price{font:500 15px var(--f-mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+.pill{display:inline-flex;align-items:center;gap:6px;font:600 12px/1 var(--f-body);text-transform:uppercase;letter-spacing:.05em;padding:6px 9px;border-radius:999px;background:var(--surface);border:1px solid var(--line);color:var(--muted);white-space:nowrap}
+.pill.held{border-color:var(--accent);color:var(--accent-text)}
+.pill .d{width:6px;height:6px;border-radius:50%;background:currentColor}
+
+/* Bib */
+.bib{position:relative;background:var(--bib);color:var(--bib-ink);border:1px solid var(--bib-line);border-radius:10px;padding:16px 22px 18px;overflow:hidden;box-shadow:0 1px 0 var(--bib-line)}
+.bib::before{content:"";position:absolute;inset:8px;pointer-events:none;background:
+  radial-gradient(circle at 6px 6px,#b6bdc1 0 3.2px,transparent 3.8px),
+  radial-gradient(circle at calc(100% - 6px) 6px,#b6bdc1 0 3.2px,transparent 3.8px),
+  radial-gradient(circle at 6px calc(100% - 6px),#b6bdc1 0 3.2px,transparent 3.8px),
+  radial-gradient(circle at calc(100% - 6px) calc(100% - 6px),#b6bdc1 0 3.2px,transparent 3.8px)}
+.bib-top{display:flex;justify-content:space-between;font:500 11px var(--f-mono);letter-spacing:.12em;text-transform:uppercase;padding:0 10px;color:#5b666e}
+.bib-num{font:900 clamp(92px,11vw,128px)/.82 var(--f-display);text-align:center;margin:12px 0 6px;letter-spacing:-.01em;font-variant-numeric:tabular-nums}
+.bib-name{text-align:center;font:800 26px/1 var(--f-display);text-transform:uppercase}
+.bib-strip{margin:14px -22px -18px;padding:9px 22px;background:var(--accent);color:var(--accent-ink);display:flex;justify-content:space-between;font:600 12px var(--f-mono);letter-spacing:.06em;text-transform:uppercase}
+.desc{font-size:16px}
+.perks{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.perks li{display:grid;grid-template-columns:20px 1fr;gap:10px;font-size:15px;align-items:start}
+.perks svg{width:18px;height:18px;margin-top:2px;color:var(--accent-text)}
+.specs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:0}
+.specs div{background:var(--sunk);border-radius:10px;padding:10px 12px;min-width:0}
+.specs dt{font:500 11px var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.specs dd{margin:4px 0 0;font-weight:600;font-size:15px}
+.buy{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-top:4px}
+.price{font:900 44px/1 var(--f-display)}
+.price small{display:block;font:500 12px var(--f-mono);color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-bottom:6px}
+.soldbox{padding:14px 16px;border-radius:12px;background:var(--sunk);font-size:15px;display:grid;gap:10px}
+
+/* Form */
+.form{display:grid;gap:14px}
+.field{display:grid;gap:6px;min-width:0}
+.field label,.field .lbl{font-weight:600;font-size:14px}
+.field label span,.field .lbl span{font-weight:400;color:var(--muted)}
+.field input[type=text],.field input[type=email],.field input[type=url],.field textarea{width:100%;font:16px var(--f-body);color:var(--ink);background:var(--surface);border:1.5px solid var(--line);border-radius:10px;padding:11px 12px;min-height:46px}
+.field textarea{min-height:84px;resize:vertical}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--ink)}
+.field.err input{border-color:var(--accent)}
+.field .msg{font-size:13px;color:var(--accent-text)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:520px){.two{grid-template-columns:1fr}.specs{grid-template-columns:1fr 1fr}}
+.drop{display:flex;align-items:center;gap:14px;padding:14px;border-radius:12px;border:1.5px dashed var(--line);background:var(--sunk);position:relative}
+.drop.over{border-color:var(--accent);background:var(--accent-soft)}
+.drop input{position:absolute;inset:0;opacity:0;cursor:pointer}
+.seg2{display:flex;gap:6px;flex-wrap:wrap}
+.seg2 label{position:relative;display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;border:1.5px solid var(--line);font-size:14px;font-weight:600;cursor:pointer}
+.seg2 input{position:absolute;opacity:0;pointer-events:none}
+.seg2 label:has(input:checked){border-color:var(--ink);background:var(--ink);color:var(--surface)}
+.seg2 label:has(input:focus-visible){outline:3px solid var(--accent);outline-offset:2px}
+.sw{width:14px;height:14px;border-radius:50%;border:1px solid var(--line);background:conic-gradient(#ff5b1f 0 33%,#2e6bf0 0 66%,#16815a 0)}
+.sw.w{background:#14264A}
+.demo{font-size:13.5px;line-height:1.45;padding:11px 13px;border-radius:10px;border:1px solid var(--accent);background:var(--accent-soft)}
+.summary{margin:0;display:grid;gap:0;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.summary div{display:flex;justify-content:space-between;gap:16px;padding:11px 14px;font-size:15px}
+.summary div+div{border-top:1px solid var(--line)}
+.summary dt{color:var(--muted)}
+.summary dd{margin:0;font-weight:600;text-align:right;min-width:0;overflow-wrap:anywhere}
+.summary .tot{background:var(--sunk)}
+.summary .tot dd{font:800 22px/1 var(--f-display)}
+.done{display:grid;gap:14px;justify-items:start}
+.done .check{width:54px;height:54px;border-radius:50%;background:var(--ok);color:#fff;display:grid;place-items:center}
+.done .check svg{width:28px;height:28px}
+
+/* Steps */
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;counter-reset:s}
+.steps li{display:grid;gap:10px;align-content:start;padding-top:18px;border-top:2px solid var(--ink)}
+.steps .n{font:900 46px/1 var(--f-display);color:var(--accent-text)}
+.steps h3{font-size:26px;font-weight:800}
+.steps p{color:var(--muted);font-size:16px}
+@media (max-width:900px){.steps{grid-template-columns:1fr 1fr}}
+@media (max-width:540px){.steps{grid-template-columns:1fr}}
+
+/* Benefits */
+.ben{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.ben div{background:var(--surface);padding:26px;display:grid;gap:10px;align-content:start}
+.ben b{font:900 clamp(38px,4.4vw,56px)/.9 var(--f-display);text-transform:uppercase}
+.ben b small{font:500 14px var(--f-mono);text-transform:none;color:var(--muted);margin-left:6px;letter-spacing:0}
+.ben p{color:var(--muted);max-width:44ch}
+@media (max-width:700px){.ben{grid-template-columns:1fr}}
+
+/* Race */
+.race{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border-block:2px solid var(--ink)}
+.race div{padding:22px 18px 20px 0;display:grid;gap:6px}
+.race div+div{padding-left:18px;border-left:1px solid var(--line)}
+.race b{font:900 clamp(48px,6vw,84px)/.85 var(--f-display);font-variant-numeric:tabular-nums}
+.race b small{font:500 15px var(--f-mono);margin-left:4px;color:var(--muted)}
+.race span{font:500 12px var(--f-mono);letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+@media (max-width:700px){.race{grid-template-columns:1fr 1fr}.race div:nth-child(3){padding-left:0;border-left:0}.race div:nth-child(n+3){border-top:1px solid var(--line)}}
+.race-meta{display:flex;flex-wrap:wrap;gap:10px 28px;margin-top:18px;color:var(--muted);font-size:15px}
+.race-meta strong{color:var(--ink)}
+
+/* FAQ */
+.faq{display:grid;gap:0;border-top:1px solid var(--line);max-width:860px}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;padding:18px 40px 18px 0;font-weight:600;font-size:18px;position:relative}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"";position:absolute;right:6px;top:50%;width:12px;height:12px;border-right:2px solid var(--ink);border-bottom:2px solid var(--ink);transform:translateY(-70%) rotate(45deg);transition:transform .2s ease}
+.faq details[open] summary::after{transform:translateY(-30%) rotate(-135deg)}
+.faq details p{padding:0 0 20px;color:var(--muted);max-width:64ch}
+
+/* Contact */
+.contact{background:var(--ink);color:var(--bg);border-radius:18px;padding:clamp(28px,5vw,56px);display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:28px;align-items:end}
+.contact h2{font-size:clamp(40px,5.6vw,76px);font-weight:900}
+.contact p{color:color-mix(in srgb,var(--bg) 72%,var(--ink));margin-top:14px;max-width:48ch}
+.mail{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:flex-start}
+.mail code{font:500 16px var(--f-mono);padding:12px 16px;border-radius:999px;border:1.5px solid color-mix(in srgb,var(--bg) 30%,var(--ink));user-select:all;overflow-wrap:anywhere}
+.mail .btn.ghost{color:var(--bg);border-color:color-mix(in srgb,var(--bg) 30%,var(--ink))}
+@media (max-width:800px){.contact{grid-template-columns:1fr}}
+.site-foot{padding-block:28px 40px;color:var(--muted);font-size:13.5px}
+.site-foot .wrap{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between}
+.site-foot a{color:inherit;text-underline-offset:3px}
+.foot-links{display:flex;flex-wrap:wrap;gap:6px 18px}
+
+/* Sponsor confermati */
+.wall{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px}
+.wall li{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 18px;display:grid;gap:4px}
+.wall b{font:900 26px/1 var(--f-display);text-transform:uppercase;overflow-wrap:anywhere}
+.wall a{color:inherit;text-decoration:none}
+.wall a:hover b{color:var(--accent-text)}
+.wall span{font:500 12px var(--f-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+
+/* Termini e condizioni */
+.tkey{margin-bottom:28px}
+.tkey b{font-size:clamp(40px,5vw,68px)}
+.tkey p{font-size:14px;line-height:1.4;color:var(--muted);max-width:26ch}
+.terms{max-width:900px}
+.terms summary{display:flex;align-items:baseline}
+.terms summary .tn{flex:none;font:500 13px var(--f-mono);color:var(--accent-text);margin-right:12px;font-variant-numeric:tabular-nums}
+.faq details .tbody{padding:0 0 22px;color:var(--muted);display:grid;gap:10px;max-width:72ch;font-size:16px}
+.faq details .tbody p{padding:0}
+.tbody ul{margin:0;padding-left:20px;display:grid;gap:6px}
+.tbody strong{color:var(--ink);font-weight:600}
+.tbody a{color:var(--ink);text-underline-offset:3px}
+.terms-note{margin-top:18px;font-size:14px;color:var(--muted);max-width:72ch}
+
+/* Accettazione nel riepilogo */
+.agree{display:grid;grid-template-columns:22px 1fr;gap:10px;align-items:start;font-size:14.5px;line-height:1.45;cursor:pointer}
+.agree input{width:20px;height:20px;margin:1px 0 0;accent-color:var(--accent);cursor:pointer}
+.agree a{color:var(--ink);text-underline-offset:3px}
+.fineprint{font-size:13px;color:var(--muted);line-height:1.45}
+.fineprint a{color:inherit;text-underline-offset:3px}
+.done-actions{display:flex;flex-wrap:wrap;gap:10px}
+.req{justify-self:stretch;font-size:14px;border-top:1px solid var(--line);padding-top:12px}
+.req summary{cursor:pointer;font-weight:600;color:var(--muted)}
+.req summary:hover{color:var(--ink)}
+.req > *+*{margin-top:10px}
+.req textarea{display:block;width:100%;min-height:230px;resize:vertical;font:13px/1.5 var(--f-mono);color:var(--ink);background:var(--sunk);border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .hotspot::after,.spinner{animation:none}
+  *{transition-duration:0s!important}
+}
+</style>
+
+<header class="site-head">
+  <div class="wrap head-row">
+    <a class="brand" href="#top" aria-label="Torna in cima">
+      <span class="brand-mark" id="brandMark">EG</span>
+      <span class="brand-text"><strong id="brandName">Edoardo Guttuso</strong><span>verso l'IRONMAN di Cervia</span></span>
+    </a>
+    <nav class="nav" aria-label="Sezioni">
+      <a href="#spazi">Spazi</a>
+      <a href="#come-funziona">Come funziona</a>
+      <a href="#gara">La gara</a>
+      <a href="#faq">FAQ</a>
+      <a href="#termini">Termini</a>
+    </nav>
+    <a class="btn primary small" href="#spazi">Diventa sponsor</a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow">Campagna sponsor · IRONMAN Italy Emilia-Romagna 2027</p>
+        <h1>Corro 226 km. <span class="hl">Il tuo logo viene con me.</span></h1>
+        <p class="lead">Il 18 settembre 2027 sono al via dell'IRONMAN Italy Emilia-Romagna a Cervia, nell'edizione del decimo anniversario. Il mio body di gara ha dieci spazi per le aziende che vogliono esserci: dalla T1 al traguardo, in ogni foto. Scegli il tuo spazio, carica il logo e guardalo sul body in 3D.</p>
+        <div class="hero-cta">
+          <a class="btn primary" href="#spazi">Scegli il tuo spazio</a>
+          <a class="btn ghost" href="#come-funziona">Come funziona</a>
+        </div>
+      </div>
+      <aside class="hero-side" aria-label="Gara, percorso e spazi venduti">
+        <div class="hs-block">
+          <div class="hs-head"><span class="eyebrow">Cervia · 18.09.2027</span><span class="mono">10° anniversario</span></div>
+          <div class="countdown"><b id="daysLeft">329</b><span id="daysLabel">giorni al via</span></div>
+        </div>
+        <div class="hs-block">
+          <div class="hs-head"><span class="eyebrow">Il percorso, in scala</span><span class="mono">226 km</span></div>
+          <div class="split-bar" role="img" aria-label="Nuoto 3,8 km, bici 180 km, corsa 42,2 km, in proporzione">
+            <span class="s-swim" style="flex:3.8"></span><span class="s-bike" style="flex:180"></span><span class="s-run" style="flex:42.2"></span>
+          </div>
+          <ul class="split-legend">
+            <li><span><i class="dot s-swim"></i>Nuoto</span><b>3,8<small>km</small></b></li>
+            <li><span><i class="dot s-bike"></i>Bici</span><b>180<small>km</small></b></li>
+            <li><span><i class="dot s-run"></i>Corsa</span><b>42,2<small>km</small></b></li>
+          </ul>
+        </div>
+        <div class="hs-block">
+          <div class="hs-head"><span class="eyebrow">Spazi assegnati</span><span class="mono" id="fundCount">–</span></div>
+          <div class="fund-bar" id="fundBar" aria-hidden="true"></div>
+          <p class="fund-total"><strong id="fundRaised">–</strong> raccolti su <span id="fundGoal">–</span></p>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="config-sec" id="spazi">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <p class="eyebrow">Il body da gara</p>
+          <h2>Gira il body. Scegli lo spazio.</h2>
+        </div>
+        <p class="muted">Ogni <b>+</b> è uno spazio libero. Toccalo per vedere misure e prezzo, poi carica il tuo logo per vederlo stampato.</p>
+      </div>
+      <div class="config">
+        <div class="stage" id="stage">
+          <canvas id="gl" aria-label="Modello 3D del body da gara, trascina per ruotarlo"></canvas>
+          <div class="hotspots" id="hotspots"></div>
+          <div class="stage-loading" id="stageLoading"><span class="spinner"></span><span>Sto cucendo il body…</span></div>
+          <div class="stage-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h18M3 12l4-4M3 12l4 4M21 12l-4-4M21 12l-4 4"/></svg><span>Trascina per ruotare</span></div>
+          <div class="stage-legend"><span class="lg-plus">+</span>Spazio libero</div>
+          <div class="stage-tools" role="toolbar" aria-label="Vista del body">
+            <button type="button" data-view="front" class="on">Fronte</button>
+            <button type="button" data-view="side">Lato</button>
+            <button type="button" data-view="back">Retro</button>
+            <span class="sep" aria-hidden="true"></span>
+            <button type="button" class="icon" id="zoomBtn" aria-pressed="false" aria-label="Avvicina" title="Avvicina"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.2-4.2M11 8.5v5M8.5 11h5"/></svg></button>
+            <button type="button" class="icon" id="spinBtn" aria-pressed="true" aria-label="Rotazione automatica" title="Rotazione automatica"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.34-5.66"/><path d="M20 4v4h-4"/></svg></button>
+          </div>
+        </div>
+        <div class="panel" id="panel" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="come-funziona">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <p class="eyebrow">Come funziona</p>
+          <h2>Dal click alla linea d'arrivo</h2>
+        </div>
+      </div>
+      <ol class="steps">
+        <li><span class="n">1</span><h3>Scegli lo spazio</h3><p>Dieci spazi tra petto, spalle, addome, fianchi e schiena. Ognuno ha una misura e un prezzo fissi.</p></li>
+        <li><span class="n">2</span><h3>Prova il logo</h3><p>Carica il logo e guardalo sul body in 3D, nello spazio che hai scelto, a colori o in bianco.</p></li>
+        <li><span class="n">3</span><h3>Conferma</h3><p>Lasci i dati dell'azienda e mi mandi la richiesta via email. Ti rispondo con il contratto: con la firma e l'acconto del 50% lo spazio è tuo.</p></li>
+        <li><span class="n">4</span><h3>In gara</h3><p>Il body va in stampa in sublimazione con tutti i loghi. Dopo la gara ricevi foto e video in cui il tuo marchio si vede.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="sec" id="cosa-ottieni">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <p class="eyebrow">Cosa ottieni</p>
+          <h2>Un logo che fa l'IRONMAN</h2>
+        </div>
+      </div>
+      <div class="ben">
+        <div><b>222,2<small>km in vista</small></b><p>Dalla T1 al traguardo il body si vede sempre: 180 km di bici e una maratona intera.</p></div>
+        <div><b>Foto e video</b><p>Ti mando le mie foto e i video della gara e degli allenamenti con il body, da usare sui tuoi canali.</p></div>
+        <div><b>Mesi di racconto</b><p>La preparazione la racconto sui miei social e ogni volta che il body compare, il tuo brand viene taggato.</p></div>
+        <div><b>Il tuo nome qui</b><p>Ogni sponsor ha il suo nome in questa pagina con un link al proprio sito, per almeno 12 mesi dopo la gara.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="sponsor" hidden>
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <p class="eyebrow">Sul body</p>
+          <h2>Chi corre con me</h2>
+        </div>
+      </div>
+      <ul class="wall" id="wall"></ul>
+    </div>
+  </section>
+
+  <section class="sec" id="gara">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <p class="eyebrow">La gara</p>
+          <h2>Cervia, 18 settembre 2027</h2>
+        </div>
+        <p class="muted">IRONMAN Italy Emilia-Romagna, l'edizione del decimo anniversario. Tre sport di fila, nello stesso giorno, con un tempo limite di 17 ore.</p>
+      </div>
+      <div class="race">
+        <div><span>Nuoto</span><b>3,8<small>km</small></b></div>
+        <div><span>Bici</span><b>180<small>km</small></b></div>
+        <div><span>Corsa</span><b>42,2<small>km</small></b></div>
+        <div><span>Tempo limite</span><b>17<small>ore</small></b></div>
+      </div>
+      <div class="race-meta">
+        <span>Gara: <strong id="raceName">IRONMAN Italy Emilia-Romagna</strong></span>
+        <span>Luogo: <strong id="racePlace">Cervia</strong></span>
+        <span>Data: <strong id="raceDate">sabato 18 settembre 2027</strong></span>
+        <span>Edizione: <strong id="raceEdition">10° anniversario</strong></span>
+        <span>Chiusura sponsor: <strong id="raceDeadline">da annunciare</strong></span>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="faq">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <p class="eyebrow">Domande frequenti</p>
+          <h2>Prima di scegliere</h2>
+        </div>
+      </div>
+      <div class="faq">
+        <details><summary>Quanto sarà grande il mio logo?</summary><p>Ogni spazio ha una misura massima di stampa in centimetri, indicata nella sua scheda. Il logo viene scalato per stare dentro quell'area senza essere deformato.</p></details>
+        <details><summary>In che formato devo mandare il logo?</summary><p>Meglio vettoriale: SVG, PDF o AI. Va bene anche un PNG con sfondo trasparente, almeno 2000 px sul lato lungo.</p></details>
+        <details><summary>Il logo può essere a colori?</summary><p>Sì. Il body è stampato in sublimazione, quindi i colori non sono un limite. Sul bianco i colori originali rendono bene; sulle fasce blu dei fianchi spesso si legge meglio la versione monocromatica. Nell'anteprima 3D puoi provarle tutte e due.</p></details>
+        <details><summary>Si vede anche durante il nuoto?</summary><p>Se la gara si nuota con la muta, il body resta coperto nella frazione di nuoto. Il logo esce in T1 e resta in vista per tutti i 222,2 km di bici e corsa.</p></details>
+        <details><summary>Posso prendere più di uno spazio?</summary><p>Sì. Molti scelgono una coppia, come le due spalle o i due fianchi. Scrivimi e preparo un'unica proposta.</p></details>
+        <details><summary>Entro quando devo decidere?</summary><p>Gli spazi si prenotano fino al <span data-deadline>30 giugno 2027</span>, che è anche il termine per mandare il logo e saldare. Poi il body va in produzione per essere pronto prima della gara. Gli spazi si assegnano in ordine di firma del contratto.</p></details>
+        <details><summary>Come funziona il pagamento? Serve una fattura?</summary><p>Si paga con bonifico: metà alla firma del contratto, metà entro la chiusura sponsor. Sono un atleta amatore e non un'impresa: il documento fiscale giusto (ricevuta o fattura della mia società sportiva) e l'eventuale ritenuta d'acconto sono scritti nel contratto, prima di pagare.</p></details>
+        <details><summary>E se la gara viene annullata o non riesco a partire?</summary><p>Se la gara viene rinviata, la sponsorizzazione passa alla nuova data. Se viene annullata, o se un infortunio mi impedisce di partire, scegli tu: spostiamo il logo su un'altra gara IRONMAN o ti rimborso metà del prezzo. I dettagli sono nei termini qui sotto.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <div class="contact">
+        <div>
+          <h2>Hai un'idea diversa?</h2>
+          <p>Un pacchetto con più spazi, un evento insieme, un prodotto da testare in allenamento. Scrivimi e ne parliamo.</p>
+        </div>
+        <div class="mail">
+          <code id="mailText">edoardo.g.guttuso@gmail.com</code>
+          <button type="button" class="btn ghost small" id="copyMail">Copia indirizzo</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="termini">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <p class="eyebrow">Termini e condizioni</p>
+          <h2>Le regole del gioco</h2>
+        </div>
+        <p class="muted">Valgono per tutti gli spazi del body e vengono ripresi nel contratto che firmiamo. Versione del 6 novembre 2026.</p>
+      </div>
+
+      <div class="race tkey">
+        <div><span>Una gara sola</span><b>1</b><p>IRONMAN Italy Emilia-Romagna, Cervia, 18 settembre 2027</p></div>
+        <div><span>Alla firma</span><b>50%</b><p>Il resto entro la chiusura sponsor</p></div>
+        <div><span>Chiusura sponsor</span><b>30.06</b><p>2027: ultimo giorno per logo e saldo</p></div>
+        <div><span>Se la gara salta</span><b>50%</b><p>Rimborso, oppure il logo passa a un'altra gara</p></div>
+      </div>
+
+      <div class="faq terms">
+        <details><summary><span class="tn">01</span>Chi sono le parti</summary><div class="tbody">
+          <p>La sponsorizzazione è un accordo tra <strong><span data-athlete>Edoardo Guttuso</span></strong>, atleta amatore che partecipa come persona fisica («l'Atleta»), e l'azienda, l'ente o il professionista che prenota uno spazio («lo Sponsor»).</p>
+          <p>L'offerta è rivolta solo a imprese e professionisti, non ai consumatori: per questo non si applicano le norme del Codice del Consumo. I dati anagrafici e fiscali completi delle parti sono scritti nel contratto.</p>
+        </div></details>
+
+        <details><summary><span class="tn">02</span>Uno spazio, una sola gara</summary><div class="tbody">
+          <p>Lo Sponsor acquista il diritto di far stampare il proprio logo in uno spazio del body da gara, entro le misure massime indicate nella scheda dello spazio.</p>
+          <p>Il body è realizzato per <strong>una sola gara: l'IRONMAN Italy Emilia-Romagna di Cervia del 18 settembre 2027</strong> («la Gara»). Prima della Gara l'Atleta può indossarlo in allenamento, nei servizi fotografici e nei contenuti che raccontano la preparazione. L'Atleta non si impegna a indossarlo in altre competizioni, e dopo la Gara il body non è più oggetto di obblighi.</p>
+          <p>La data della Gara è quella fissata dall'organizzatore e può cambiare: cosa succede in quel caso è scritto al punto 09.</p>
+        </div></details>
+
+        <details><summary><span class="tn">03</span>Prenotazione e contratto</summary><div class="tbody">
+          <p>La prenotazione fatta da questo sito è una <strong>richiesta</strong> e non vincola nessuna delle parti. Entro 5 giorni lavorativi l'Atleta risponde via email e, se lo spazio è libero e il marchio è accettabile (punto 06), manda il contratto di sponsorizzazione, che riprende questi termini.</p>
+          <p>Lo spazio è assegnato quando il contratto è firmato da entrambi e l'acconto è stato pagato. Fino ad allora può comparire come «Prenotato», ma non è garantito. A parità di richiesta vale l'ordine di firma.</p>
+          <p>Sul body non vanno due Sponsor in diretta concorrenza tra loro, salvo accordo scritto di entrambi.</p>
+        </div></details>
+
+        <details><summary><span class="tn">04</span>Prezzi e pagamento</summary><div class="tbody">
+          <p>I prezzi sono in euro, indicati nella scheda di ogni spazio, e coprono tutto il periodo fino alla Gara. Per più spazi si può fissare nel contratto un prezzo unico.</p>
+          <ul>
+            <li><strong>50% alla firma</strong> del contratto, con bonifico.</li>
+            <li><strong>50% entro il <span data-deadline>30 giugno 2027</span></strong>, oppure alla firma se il contratto è firmato dopo quella data.</li>
+          </ul>
+          <p>Se il saldo non arriva entro 15 giorni da un sollecito scritto, l'Atleta può liberare lo spazio e trattenere l'acconto.</p>
+          <p>L'Atleta non opera come impresa. Il documento fiscale (ricevuta per prestazione occasionale, oppure fattura della società sportiva dell'Atleta se la sponsorizzazione passa da lei) è indicato nel contratto. Gli importi sono lordi: se è dovuta una ritenuta d'acconto, lo Sponsor la trattiene dal prezzo e la versa all'Erario come sostituto d'imposta.</p>
+        </div></details>
+
+        <details><summary><span class="tn">05</span>Il logo e la bozza</summary><div class="tbody">
+          <p>Lo Sponsor manda il logo entro il <span data-deadline>30 giugno 2027</span>, in vettoriale (SVG, PDF, AI o EPS) oppure in PNG con sfondo trasparente di almeno 2000 px sul lato lungo, con gli eventuali codici colore.</p>
+          <p>L'Atleta prepara la bozza del body e la manda via email. Lo Sponsor ha 5 giorni lavorativi per approvarla o chiedere modifiche: senza risposta la bozza si considera approvata. Dopo l'approvazione il logo non si cambia più.</p>
+          <p>La stampa è in sublimazione. Piccole differenze di tonalità rispetto allo schermo, al Pantone o tra tessuti diversi sono normali e non sono un difetto. Se il logo arriva in ritardo per causa dello Sponsor, l'Atleta può stampare il nome dello Sponsor in un carattere standard oppure, se non c'è più tempo, lasciare lo spazio vuoto senza rimborso.</p>
+        </div></details>
+
+        <details><summary><span class="tn">06</span>Cosa non si può stampare</summary><div class="tbody">
+          <p>L'Atleta può rifiutare un marchio, rimborsando quanto eventualmente ricevuto, se il marchio o il messaggio:</p>
+          <ul>
+            <li>contiene propaganda politica, religiosa o razziale, vietata dal regolamento IRONMAN pena la squalifica;</li>
+            <li>è offensivo, volgare o discriminatorio;</li>
+            <li>promuove giochi e scommesse con vincite in denaro, tabacco e sigarette elettroniche, farmaci soggetti a ricetta, armi, contenuti per adulti o attività illegali;</li>
+            <li>usa marchi, nomi o loghi IRONMAN o di terzi senza averne il diritto.</li>
+          </ul>
+          <p>Se l'organizzazione o un giudice di gara chiede di coprire o togliere un logo, l'Atleta lo fa: non è un inadempimento.</p>
+        </div></details>
+
+        <details><summary><span class="tn">07</span>Marchi e diritti</summary><div class="tbody">
+          <p>Lo Sponsor garantisce di avere i diritti sul logo che manda e autorizza l'Atleta a riprodurlo sul body, in questa pagina e nei contenuti del progetto (foto, video, post). I contenuti già pubblicati possono restare online anche dopo la fine dell'accordo. Lo Sponsor tiene indenne l'Atleta da contestazioni di terzi sul logo.</p>
+          <p>Lo Sponsor <strong>non è partner ufficiale della Gara</strong>: non può usare i marchi IRONMAN®, il logo M-Dot o le foto ufficiali della Gara nella propria comunicazione, né presentarsi come sponsor dell'evento. Può dire di sostenere l'Atleta.</p>
+        </div></details>
+
+        <details><summary><span class="tn">08</span>Cosa fa l'Atleta, e cosa non può promettere</summary><div class="tbody">
+          <p>L'Atleta si impegna a:</p>
+          <ul>
+            <li>indossare il body in Gara per tutta la frazione di bici e di corsa e al traguardo (nel nuoto può essere coperto dalla muta);</li>
+            <li>taggare lo Sponsor nei post dei suoi profili social in cui compare il body;</li>
+            <li>mandare allo Sponsor, entro 30 giorni dalla Gara, una selezione delle proprie foto e dei propri video con il body, che lo Sponsor può usare sui suoi canali citando l'Atleta;</li>
+            <li>tenere il nome e il link dello Sponsor in questa pagina per almeno 12 mesi dopo la Gara.</li>
+          </ul>
+          <p>L'Atleta non garantisce un tempo, un piazzamento, l'arrivo al traguardo, né un numero minimo di foto, visualizzazioni o passaggi in TV e streaming. Le foto dei fotografi ufficiali della Gara appartengono a loro: lo Sponsor può usarle solo con una loro licenza.</p>
+        </div></details>
+
+        <details><summary><span class="tn">09</span>Se la gara cambia o non riesco a partire</summary><div class="tbody">
+          <ul>
+            <li><strong>Gara rinviata:</strong> la sponsorizzazione passa alla nuova data, senza costi.</li>
+            <li><strong>Gara accorciata o modificata</strong> (per esempio nuoto annullato per il meteo): nessun rimborso, il body è comunque in gara.</li>
+            <li><strong>Gara annullata</strong> e non recuperata entro 12 mesi, oppure <strong>l'Atleta non può partire</strong> per infortunio, malattia o altra causa grave documentata: lo Sponsor sceglie se spostare la sponsorizzazione su un'altra gara di distanza IRONMAN indicata dall'Atleta o avere il rimborso del 50% di quanto pagato. L'altra metà copre la produzione del body e i contenuti già pubblicati.</li>
+            <li><strong>L'Atleta non parte senza un motivo valido:</strong> rimborsa l'intero prezzo.</li>
+            <li><strong>L'Atleta parte ma non arriva al traguardo:</strong> nessun rimborso.</li>
+          </ul>
+        </div></details>
+
+        <details><summary><span class="tn">10</span>Recesso e clausola etica</summary><div class="tbody">
+          <p>Lo Sponsor può recedere con una email entro 14 giorni dalla firma, con rimborso di tutto quanto pagato. Dopo i 14 giorni e fino al <span data-deadline>30 giugno 2027</span> può recedere perdendo l'acconto. Dopo quella data il body è in produzione e il recesso non dà diritto a rimborsi.</p>
+          <p>Ciascuna parte può risolvere il contratto se l'altra è coinvolta in fatti gravi che ne danneggiano la reputazione, come una squalifica per doping dell'Atleta. Se la causa è dell'Atleta, rimborsa quanto ricevuto. Se è dello Sponsor, l'Atleta può coprire o togliere il logo e trattiene quanto ricevuto.</p>
+        </div></details>
+
+        <details><summary><span class="tn">11</span>Responsabilità</summary><div class="tbody">
+          <p>Salvo dolo o colpa grave, la responsabilità dell'Atleta verso lo Sponsor, per qualsiasi causa, non supera il prezzo pagato per lo spazio.</p>
+        </div></details>
+
+        <details id="privacy"><summary><span class="tn">12</span>Privacy: come uso i tuoi dati</summary><div class="tbody">
+          <p><strong>Titolare del trattamento</strong> è <span data-athlete>Edoardo Guttuso</span>, che puoi contattare a <span data-email>edoardo.g.guttuso@gmail.com</span>.</p>
+          <p><strong>Quali dati:</strong> nome dell'azienda, nome del referente, email, sito web, note e logo che inserisci nel modulo di prenotazione.</p>
+          <p><strong>Perché:</strong> per rispondere alla richiesta e gestire il contratto (art. 6.1.b GDPR) e per gli obblighi fiscali (art. 6.1.c GDPR). Nome, logo e sito dell'azienda vengono pubblicati sul body, in questa pagina e sui social perché sono l'oggetto stesso della sponsorizzazione. I dati non vengono venduti né usati per pubblicità di terzi.</p>
+          <p><strong>Per quanto tempo:</strong> per la durata dell'accordo e poi per 10 anni, come richiesto dalle norme fiscali. Le richieste che non diventano un contratto vengono cancellate entro 12 mesi.</p>
+          <p>Quando invii la richiesta, i dati del modulo passano dal servizio FormSubmit (formsubmit.co), che li inoltra come email all'indirizzo qui sopra, gestito da Gmail (Google); questi servizi possono trattarli anche fuori dall'Unione europea. Il sito non li salva ed è ospitato da GitHub Pages (GitHub). Il logo che carichi per provarlo sul body in 3D resta nel tuo browser e non viene inviato. Il codice di questa pagina non usa cookie né strumenti di tracciamento; carica però i caratteri da Google Fonts e la libreria 3D da jsDelivr, che ricevono l'indirizzo IP del visitatore per fornire i file.</p>
+          <p><strong>I tuoi diritti:</strong> puoi chiedere accesso, rettifica, cancellazione, limitazione e portabilità dei dati e opporti al trattamento (artt. 15–22 GDPR) scrivendo all'indirizzo qui sopra. Puoi anche fare reclamo al Garante per la protezione dei dati personali (<a href="https://www.garanteprivacy.it" target="_blank" rel="noopener">garanteprivacy.it</a>).</p>
+        </div></details>
+
+        <details><summary><span class="tn">13</span>Legge applicabile e modifiche</summary><div class="tbody">
+          <p>Si applica la legge italiana. Per ogni controversia è competente in via esclusiva il foro del luogo di residenza dell'Atleta. Le clausole dei punti 04, 05, 09, 10 e 11 e la scelta del foro sono riportate nel contratto per l'approvazione specifica (artt. 1341 e 1342 del Codice civile).</p>
+          <p>Questi termini possono essere aggiornati. Ai contratti già firmati si applica la versione in vigore al momento della firma.</p>
+        </div></details>
+      </div>
+      <p class="terms-note">IRONMAN® e M-Dot sono marchi registrati di World Triathlon Corporation. Questo progetto è personale e non è affiliato né approvato da IRONMAN o dall'organizzatore della Gara.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <span>© 2026 <span id="footName">Edoardo Guttuso</span> · Progetto personale di sponsorizzazione</span>
+    <span class="foot-links"><a href="#termini">Termini e condizioni</a><a href="#privacy">Privacy</a></span>
+    <span>IRONMAN® è un marchio registrato di World Triathlon Corporation. Questo sito non è affiliato.</span>
+  </div>
+</footer>
+
+<script type="importmap">
+{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/"}}
+</script>
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+
+/* =====================================================================
+   CONFIG — personalizza qui nomi, prezzi, colori del body e spazi.
+   Spazio venduto: aggiungi allo slot  sold: { name: 'Azienda', web: 'https://…' }
+   (compare sul body, nella lista e nella sezione "Chi corre con me").
+   Spazio prenotato in attesa di firma: sold: { name: 'Azienda', pending: true }.
+   Per una demo puoi usare sold: { name: 'NOME', demo: true }: toglilo prima di condividere il sito.
+   Listino: 2.500 + 2×600 + 2×700 + 2×1.000 + 1.800 + 2×450 = 9.800 €.
+   ===================================================================== */
+const CONFIG = {
+  athlete: 'Edoardo Guttuso',
+  initials: 'EG',
+  race: { name: 'IRONMAN Italy Emilia-Romagna', place: 'Cervia', edition: '10° anniversario', date: '2027-09-18', deadline: '30 giugno 2027' },
+  email: 'edoardo.g.guttuso@gmail.com',
+  // Le richieste partono dal sito tramite FormSubmit (formsubmit.co) e arrivano a questo indirizzo.
+  // La prima richiesta fa arrivare un'email "Activate Form": cliccala, poi le richieste arrivano tutte.
+  // Dopo l'attivazione puoi mettere qui il codice alias che ti manda FormSubmit, al posto dell'email.
+  formTo: 'edoardo.g.guttuso@gmail.com',
+  hidePrices: false, // true = prezzi nascosti con *** (per video e anteprime); false = prezzi visibili
+  // base = tessuto principale, panel = blu marino (fianchi, zip), accent = arancio (bordini e righe)
+  suit: { base: '#F4F5F2', panel: '#14264A', accent: '#FF5B1F', inner: '#C9CFD6', zip: '#14264A' },
+  // nome stampato dietro, sopra lo spazio della schiena alta (w × h in cm)
+  backName: { text: 'EDOARDO', w: 22, h: 6, at: [0, 1.42, -0.1], dir: [0, 0.3, -1], up: [0, 1, 0] },
+  slots: [
+    { id: 'petto', n: 1, name: 'Petto', zone: 'Fronte', w: 20, h: 12, price: 2500,
+      desc: 'Al centro del petto, sotto la zip. È il primo logo che si legge, in ogni foto frontale e sotto l\'arco d\'arrivo.',
+      perks: ['In primo piano nelle foto frontali', 'Al traguardo il body va chiuso per regolamento: il petto è sempre in foto'],
+      at: [0, 1.262, 0.1], dir: [0, 0, 1], up: [0, 1, 0] },
+    { id: 'spalla-sx', n: 2, name: 'Spalla sinistra', zone: 'Spalle', w: 6, h: 4, price: 600,
+      desc: 'Sulla manica sinistra, lato esterno. Si vede di profilo in bici e in tutte le foto laterali.',
+      perks: ['Visibile di lato in bici e in corsa', 'Perfetto in coppia con la spalla destra'],
+      arm: 1 },
+    { id: 'spalla-dx', n: 3, name: 'Spalla destra', zone: 'Spalle', w: 6, h: 4, price: 600,
+      desc: 'Sulla manica destra, lato esterno. Si vede di profilo in bici e in tutte le foto laterali.',
+      perks: ['Visibile di lato in bici e in corsa', 'Perfetto in coppia con la spalla sinistra'],
+      arm: -1 },
+    { id: 'addome-sx', n: 4, name: 'Addome sinistro', zone: 'Fronte', w: 9, h: 5, price: 700,
+      desc: 'Sotto il petto, sul lato sinistro dell\'addome. Entra in tutte le foto frontali, in bici e in corsa.',
+      perks: ['Sempre nell\'inquadratura frontale', 'Accanto al logo del petto'],
+      at: [0.062, 1.075, 0.09], dir: [0.17, 0, 1], up: [0, 1, 0] },
+    { id: 'addome-dx', n: 5, name: 'Addome destro', zone: 'Fronte', w: 9, h: 5, price: 700,
+      desc: 'Sotto il petto, sul lato destro dell\'addome. Entra in tutte le foto frontali, in bici e in corsa.',
+      perks: ['Sempre nell\'inquadratura frontale', 'Accanto al logo del petto'],
+      at: [-0.062, 1.075, 0.09], dir: [-0.17, 0, 1], up: [0, 1, 0] },
+    { id: 'fianco-sx', n: 6, name: 'Fianco sinistro', zone: 'Fianchi', w: 30, h: 5, price: 1000,
+      desc: 'Una fascia lunga sul dorsale sinistro, dall\'ascella al fianco. Il formato giusto per un nome lungo.',
+      perks: ['Si legge di profilo per 180 km di bici', 'Formato lungo, ideale per un nome'],
+      at: [0.14, 1.065, 0], dir: [1, 0, 0], up: [0, 0, 1] },
+    { id: 'fianco-dx', n: 7, name: 'Fianco destro', zone: 'Fianchi', w: 30, h: 5, price: 1000,
+      desc: 'Una fascia lunga sul dorsale destro, dall\'ascella al fianco. Il formato giusto per un nome lungo.',
+      perks: ['Si legge di profilo per 180 km di bici', 'Formato lungo, ideale per un nome'],
+      at: [-0.14, 1.065, 0], dir: [-1, 0, 0], up: [0, 0, -1] },
+    { id: 'schiena', n: 8, name: 'Schiena alta', zone: 'Retro', w: 24, h: 14, price: 1800,
+      desc: 'Il logo più grande del body, tra le scapole, subito sotto il mio nome. È quello che vede chi è dietro di me per 222 km.',
+      perks: ['Il formato più grande disponibile', 'In vista per chi segue in bici e in corsa'],
+      at: [0, 1.302, -0.1], dir: [0, 0, -1], up: [0, 1, 0] },
+    { id: 'lombare-sx', n: 9, name: 'Schiena bassa sinistra', zone: 'Retro', w: 8, h: 4, price: 450,
+      desc: 'Piccolo spazio sopra il pantaloncino, a sinistra. In bici è all\'altezza degli occhi di chi segue.',
+      perks: ['Ben visibile in bici, da dietro', 'Lo spazio d\'ingresso'],
+      at: [0.068, 1.105, -0.1], dir: [0.16, 0, -1], up: [0, 1, 0] },
+    { id: 'lombare-dx', n: 10, name: 'Schiena bassa destra', zone: 'Retro', w: 8, h: 4, price: 450,
+      desc: 'Piccolo spazio sopra il pantaloncino, a destra. In bici è all\'altezza degli occhi di chi segue.',
+      perks: ['Ben visibile in bici, da dietro', 'Lo spazio d\'ingresso'],
+      at: [-0.068, 1.105, -0.1], dir: [-0.16, 0, -1], up: [0, 1, 0] },
+  ],
+};
+
+/* ---------- helpers ---------- */
+const $ = (s, r = document) => r.querySelector(s);
+const eur = new Intl.NumberFormat('it-IT', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0, useGrouping: 'always' });
+const money = (v) => (CONFIG.hidePrices ? '*** €' : eur.format(v));
+const num = (v) => String(v).replace('.', ',');
+const pad2 = (n) => String(n).padStart(2, '0');
+const size = (s) => `${num(s.w)} × ${num(s.h)} cm`;
+const esc = (t) => String(t).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const slotById = (id) => CONFIG.slots.find((s) => s.id === id);
+const isTaken = (s) => !!s.sold;
+const prefersReduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const ICON_PLUS = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>';
+const ICON_CHECK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
+const ICON_UP = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5M4 20h16"/></svg>';
+const ICON_BACK = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>';
+
+const state = {
+  step: 'list', selected: null, hover: null,
+  logo: null, logoMode: 'orig',
+  form: { company: '', name: '', email: '', web: '', note: '' },
+};
+
+/* ---------- static text from config ---------- */
+$('#brandName').textContent = CONFIG.athlete;
+$('#footName').textContent = CONFIG.athlete;
+$('#brandMark').textContent = CONFIG.initials;
+const raceDay = new Date(CONFIG.race.date + 'T07:00:00');
+$('#raceName').textContent = CONFIG.race.name;
+$('#racePlace').textContent = CONFIG.race.place;
+$('#raceEdition').textContent = CONFIG.race.edition;
+$('#raceDate').textContent = raceDay.toLocaleDateString('it-IT', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+$('#raceDeadline').textContent = CONFIG.race.deadline;
+{
+  const days = Math.ceil((raceDay - new Date()) / 86400000);
+  $('#daysLeft').textContent = days > 0 ? days : '0';
+  $('#daysLabel').textContent = days > 1 ? 'giorni al via' : days === 1 ? 'giorno al via' : 'si corre!';
+}
+$('#mailText').textContent = CONFIG.email;
+document.querySelectorAll('[data-athlete]').forEach((el) => (el.textContent = CONFIG.athlete));
+document.querySelectorAll('[data-email]').forEach((el) => (el.textContent = CONFIG.email));
+document.querySelectorAll('[data-deadline]').forEach((el) => (el.textContent = CONFIG.race.deadline));
+// un link a una sezione chiusa (es. #privacy) la apre
+document.addEventListener('click', (e) => {
+  const a = e.target.closest('a[href^="#"]'); if (!a) return;
+  const t = document.getElementById(a.getAttribute('href').slice(1));
+  if (t && t.tagName === 'DETAILS') t.open = true;
+});
+// sponsor confermati: nome e link al sito (sezione nascosta finché non ce n'è almeno uno)
+function renderWall() {
+  const real = CONFIG.slots.filter((s) => s.sold && !s.sold.demo && !s.sold.pending).sort((a, b) => a.n - b.n);
+  $('#sponsor').hidden = real.length === 0;
+  $('#wall').innerHTML = real.map((s) => {
+    const name = `<b>${esc(s.sold.name)}</b><span>${pad2(s.n)} · ${esc(s.name)}</span>`;
+    const url = /^https?:\/\//i.test(s.sold.web || '') ? s.sold.web : '';
+    return `<li>${url ? `<a href="${esc(url)}" target="_blank" rel="noopener">${name}</a>` : name}</li>`;
+  }).join('');
+}
+renderWall();
+$('#copyMail').addEventListener('click', async (e) => {
+  const btn = e.currentTarget;
+  try { await navigator.clipboard.writeText(CONFIG.email); btn.textContent = 'Copiato'; }
+  catch { const r = document.createRange(); r.selectNodeContents($('#mailText')); const s = getSelection(); s.removeAllRanges(); s.addRange(r); btn.textContent = 'Selezionato'; }
+  setTimeout(() => (btn.textContent = 'Copia indirizzo'), 1800);
+});
+
+function renderFunding() {
+  const slots = [...CONFIG.slots].sort((a, b) => a.n - b.n);
+  const goal = slots.reduce((t, s) => t + s.price, 0);
+  const sold = slots.filter((s) => s.sold && !s.sold.pending);
+  const raised = sold.reduce((t, s) => t + s.price, 0);
+  $('#fundBar').innerHTML = slots.map((s) => `<span class="${s.sold ? (s.sold.pending ? 'held' : 'sold') : ''}" style="--w:${CONFIG.hidePrices ? 1 : s.price}" title="${esc(pad2(s.n) + ' ' + s.name)}"></span>`).join('');
+  $('#fundCount').textContent = `${sold.length} di ${slots.length}`;
+  $('#fundRaised').textContent = money(raised);
+  $('#fundGoal').textContent = money(goal);
+}
+renderFunding();
+
+/* =====================================================================
+   3D — il body è una superficie implicita (SDF) costruita con ellissoidi
+   e capsule, svuotata come un "ghost mannequin" e poligonizzata con
+   surface nets. I loghi sono decal proiettate sulla superficie esterna.
+   ===================================================================== */
+const ARM_A = 24 * Math.PI / 180, ADX = Math.sin(ARM_A), ADY = -Math.cos(ARM_A);
+const J = [0.198, 1.395, -0.004];           // giunto spalla (+x)
+const ARM_LEN = 0.30, HEM_T = 0.152;        // lunghezza braccio, fine manica
+const AEX = J[0] + ADX * ARM_LEN, AEY = J[1] + ADY * ARM_LEN;
+const T_SHELL = 0.014;                      // spessore del tessuto "visibile" alle aperture
+const NECK_N = 1 / Math.sqrt(1 + 0.32 * 0.32);
+
+function ell(px, py, pz, cx, cy, cz, rx, ry, rz) {
+  const x = (px - cx) / rx, y = (py - cy) / ry, z = (pz - cz) / rz;
+  const k0 = Math.sqrt(x * x + y * y + z * z);
+  const x2 = x / rx, y2 = y / ry, z2 = z / rz;
+  const k1 = Math.sqrt(x2 * x2 + y2 * y2 + z2 * z2);
+  return k1 === 0 ? -Math.min(rx, ry, rz) : k0 * (k0 - 1) / k1;
+}
+function capT(px, py, pz, ax, ay, az, bx, by, bz, r0, r1) {
+  const bax = bx - ax, bay = by - ay, baz = bz - az, pax = px - ax, pay = py - ay, paz = pz - az;
+  let t = (pax * bax + pay * bay + paz * baz) / (bax * bax + bay * bay + baz * baz);
+  t = t < 0 ? 0 : t > 1 ? 1 : t;
+  const dx = pax - bax * t, dy = pay - bay * t, dz = paz - baz * t;
+  return Math.sqrt(dx * dx + dy * dy + dz * dz) - (r0 + (r1 - r0) * t);
+}
+function smin(a, b, k) { const h = Math.max(k - Math.abs(a - b), 0) / k; return Math.min(a, b) - h * h * k * 0.25; }
+function smax(a, b, k) { return -smin(-a, -b, k); }
+
+function bodyO(x, y, z) {
+  const ax = x < 0 ? -x : x;
+  let d = ell(ax, y, z, 0, 1.265, 0.0, 0.148, 0.195, 0.108);                 // gabbia toracica
+  d = smin(d, ell(ax, y, z, 0, 1.400, -0.012, 0.165, 0.080, 0.092), 0.05);    // linea spalle
+  d = smin(d, ell(ax, y, z, 0.062, 1.305, 0.022, 0.078, 0.060, 0.056), 0.06); // pettorali (appena accennati)
+  d = smin(d, ell(ax, y, z, 0.068, 1.230, -0.026, 0.092, 0.150, 0.078), 0.06);// dorsali
+  d = smin(d, ell(ax, y, z, 0, 1.080, 0.008, 0.142, 0.170, 0.100), 0.07);     // addome, vita morbida
+  d = smin(d, ell(ax, y, z, 0, 0.930, 0.000, 0.150, 0.118, 0.102), 0.07);     // bacino
+  d = smin(d, ell(ax, y, z, 0.060, 0.885, -0.026, 0.080, 0.088, 0.062), 0.06);// glutei (appena accennati)
+  d = smin(d, ell(ax, y, z, 0.085, 1.450, -0.022, 0.085, 0.040, 0.055), 0.04);// trapezi
+  d = smin(d, capT(ax, y, z, 0, 1.40, -0.012, 0, 1.62, 0.004, 0.060, 0.054), 0.04); // collo
+  d = smin(d, ell(ax, y, z, 0.190, 1.405, -0.004, 0.058, 0.066, 0.060), 0.04);// deltoidi
+  d = smin(d, capT(ax, y, z, J[0], J[1], J[2], AEX, AEY, J[2], 0.052, 0.040), 0.03); // braccio
+  d = smin(d, capT(ax, y, z, 0.086, 0.90, 0.004, 0.104, 0.40, 0.018, 0.088, 0.062), 0.04); // coscia
+  return d;
+}
+// Aperture: collo, maniche, gambe. Restituisce la regione da tenere (negativa dentro).
+const CUT = [0, 0, 0];
+function cuts(x, y, z) {
+  const ax = x < 0 ? -x : x;
+  const neck = (y + 0.32 * z - 1.505) * NECK_N;
+  const leg = 0.618 - y;
+  const px = ax - J[0], py = y - J[1], pz = z - J[2];
+  const t = px * ADX + py * ADY;
+  const qx = px - ADX * t, qy = py - ADY * t;
+  const perp = Math.sqrt(qx * qx + qy * qy + pz * pz);
+  const arm = -Math.max(perp - 0.088, HEM_T - t);
+  CUT[0] = neck; CUT[1] = leg; CUT[2] = perp < 0.075 ? (t - HEM_T) : -1;
+  return Math.max(neck, leg, arm);
+}
+function shellF(x, y, z) {
+  const o = bodyO(x, y, z);
+  const c = cuts(x, y, z);
+  return Math.max(smax(o, c, 0.006), -(o + T_SHELL));
+}
+
+function buildBody() {
+  const h = 0.005;
+  const X0 = -0.345, Y0 = 0.600, Z0 = -0.150;
+  const nx = Math.ceil(0.69 / h) + 1, ny = Math.ceil(0.95 / h) + 1, nz = Math.ceil(0.31 / h) + 1;
+  const nxy = nx * ny;
+  const F = new Float32Array(nx * ny * nz);
+  // campionamento a blocchi: lontano dalla superficie basta il segno
+  const B = 4, thr = ((B - 1) * 0.5 * Math.sqrt(3) + 1.5) * h * 1.8;
+  for (let bk = 0; bk < nz; bk += B) for (let bj = 0; bj < ny; bj += B) for (let bi = 0; bi < nx; bi += B) {
+    const ei = Math.min(bi + B, nx), ej = Math.min(bj + B, ny), ek = Math.min(bk + B, nz);
+    const c = shellF(X0 + (bi + (ei - bi - 1) / 2) * h, Y0 + (bj + (ej - bj - 1) / 2) * h, Z0 + (bk + (ek - bk - 1) / 2) * h);
+    if (Math.abs(c) > thr) {
+      for (let k = bk; k < ek; k++) for (let j = bj; j < ej; j++) { const o = j * nx + k * nxy; for (let i = bi; i < ei; i++) F[o + i] = c; }
+    } else {
+      for (let k = bk; k < ek; k++) { const z = Z0 + k * h; for (let j = bj; j < ej; j++) { const y = Y0 + j * h, o = j * nx + k * nxy; for (let i = bi; i < ei; i++) F[o + i] = shellF(X0 + i * h, y, z); } }
+    }
+  }
+  // surface nets: un vertice per cella attraversata
+  const cx = nx - 1, cy = ny - 1, cz = nz - 1;
+  const cellV = new Int32Array(cx * cy * cz).fill(-1);
+  const P = [];
+  const CO = [0, 1, nx, nx + 1, nxy, nxy + 1, nxy + nx, nxy + nx + 1];
+  const CP = [[0, 0, 0], [1, 0, 0], [0, 1, 0], [1, 1, 0], [0, 0, 1], [1, 0, 1], [0, 1, 1], [1, 1, 1]];
+  const E = [[0, 1], [2, 3], [4, 5], [6, 7], [0, 2], [1, 3], [4, 6], [5, 7], [0, 4], [1, 5], [2, 6], [3, 7]];
+  const v = new Float32Array(8);
+  for (let k = 0; k < cz; k++) for (let j = 0; j < cy; j++) for (let i = 0; i < cx; i++) {
+    const base = i + j * nx + k * nxy;
+    let m = 0;
+    for (let c = 0; c < 8; c++) { v[c] = F[base + CO[c]]; if (v[c] < 0) m |= 1 << c; }
+    if (m === 0 || m === 255) continue;
+    let sx = 0, sy = 0, sz = 0, n = 0;
+    for (let e = 0; e < 12; e++) {
+      const a = E[e][0], b = E[e][1];
+      if (((m >> a) & 1) === ((m >> b) & 1)) continue;
+      const t = v[a] / (v[a] - v[b]);
+      sx += CP[a][0] + t * (CP[b][0] - CP[a][0]);
+      sy += CP[a][1] + t * (CP[b][1] - CP[a][1]);
+      sz += CP[a][2] + t * (CP[b][2] - CP[a][2]);
+      n++;
+    }
+    cellV[i + j * cx + k * cx * cy] = P.length / 3;
+    P.push(X0 + (i + sx / n) * h, Y0 + (j + sy / n) * h, Z0 + (k + sz / n) * h);
+  }
+  const C = (i, j, k) => cellV[i + j * cx + k * cx * cy];
+  const I = [];
+  const quad = (a, b, c, d, flip) => { if (flip) I.push(a, c, b, a, d, c); else I.push(a, b, c, a, c, d); };
+  for (let k = 0; k < cz; k++) for (let j = 0; j < cy; j++) for (let i = 0; i < cx; i++) {
+    const p = i + j * nx + k * nxy, in0 = F[p] < 0;
+    if (j > 0 && k > 0 && (F[p + 1] < 0) !== in0) quad(C(i, j - 1, k - 1), C(i, j, k - 1), C(i, j, k), C(i, j - 1, k), !in0);
+    if (i > 0 && k > 0 && (F[p + nx] < 0) !== in0) quad(C(i - 1, j, k - 1), C(i - 1, j, k), C(i, j, k), C(i, j, k - 1), !in0);
+    if (i > 0 && j > 0 && (F[p + nxy] < 0) !== in0) quad(C(i - 1, j - 1, k), C(i, j - 1, k), C(i, j, k), C(i - 1, j, k), !in0);
+  }
+  // rifinitura: proiezione sulla superficie, normali dal gradiente, attributi del tessuto
+  const nv = P.length / 3;
+  const pos = new Float32Array(P), nor = new Float32Array(nv * 3), inner = new Float32Array(nv), hem = new Float32Array(nv);
+  const e = h * 0.5;
+  for (let q = 0; q < nv; q++) {
+    let x = pos[q * 3], y = pos[q * 3 + 1], z = pos[q * 3 + 2];
+    for (let it = 0; it < 2; it++) {
+      const f = shellF(x, y, z);
+      const gx = shellF(x + e, y, z) - shellF(x - e, y, z);
+      const gy = shellF(x, y + e, z) - shellF(x, y - e, z);
+      const gz = shellF(x, y, z + e) - shellF(x, y, z - e);
+      const gl = Math.hypot(gx, gy, gz) || 1;
+      const nxn = gx / gl, nyn = gy / gl, nzn = gz / gl;
+      const step = Math.max(-h, Math.min(h, f));
+      x -= nxn * step; y -= nyn * step; z -= nzn * step;
+      nor[q * 3] = nxn; nor[q * 3 + 1] = nyn; nor[q * 3 + 2] = nzn;
+    }
+    pos[q * 3] = x; pos[q * 3 + 1] = y; pos[q * 3 + 2] = z;
+    const o = bodyO(x, y, z), c = cuts(x, y, z);
+    inner[q] = (o > -T_SHELL * 0.5 && c < -0.0025) ? 0 : 1;
+    hem[q] = Math.min(-CUT[0] / 0.010, -CUT[2] / 0.018, -CUT[1] / 0.028);
+  }
+  const index = new Uint32Array(I);
+  const outer = [];
+  for (let t = 0; t < index.length; t += 3) if (!inner[index[t]] && !inner[index[t + 1]] && !inner[index[t + 2]]) outer.push(index[t], index[t + 1], index[t + 2]);
+  const geo = new THREE.BufferGeometry();
+  geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+  geo.setAttribute('normal', new THREE.BufferAttribute(nor, 3));
+  geo.setAttribute('aInner', new THREE.BufferAttribute(inner, 1));
+  geo.setAttribute('aHem', new THREE.BufferAttribute(hem, 1));
+  geo.setIndex(new THREE.BufferAttribute(index, 1));
+  geo.computeBoundingSphere();
+  return { geo, pos, nor, outer: new Uint32Array(outer) };
+}
+
+// Colori e pannelli del body, calcolati nello shader sulla posizione locale
+const SUIT_GLSL = /* glsl */`
+uniform vec3 uBase; uniform vec3 uPanel; uniform vec3 uAccent; uniform vec3 uInner; uniform vec3 uZip;
+varying vec3 vObjPos; varying float vInner; varying float vHem;
+vec3 suitColor(){
+  vec3 p = vObjPos;
+  float th = atan(p.x, p.z);
+  float side = abs(abs(th) - 1.5707963);
+  float aa = max(fwidth(side), 1e-4) * 0.75;
+  float yMask = 1.0 - smoothstep(1.205, 1.235, p.y);
+  float lat = smoothstep(0.085, 0.10, abs(p.x));
+  const float W = 0.30;
+  float panel = (1.0 - smoothstep(W - aa, W + aa, side)) * yMask * lat;
+  float pipe = (1.0 - smoothstep(0.014 - aa, 0.014 + aa, abs(side - W))) * yMask * lat;
+  vec3 c = mix(uBase, uPanel, panel);
+  c = mix(c, uAccent, pipe);
+  float ax = abs(p.x);
+  float awx = max(fwidth(p.x), 1e-4) * 0.75;
+  float front = step(0.0, p.z);
+  float zip = (1.0 - smoothstep(0.0022 - awx, 0.0022 + awx, ax)) * smoothstep(1.355, 1.362, p.y) * front;
+  float pull = (1.0 - smoothstep(0.0055 - awx, 0.0055 + awx, ax)) * step(1.458, p.y) * (1.0 - step(1.482, p.y)) * front;
+  c = mix(c, uZip, max(zip, pull));
+  float ah = max(fwidth(vHem), 1e-4) * 0.75;
+  float hemBand = 1.0 - smoothstep(1.0 - ah, 1.0 + ah, vHem);
+  c = mix(c, uAccent, hemBand);
+  c *= mix(0.93, 1.0, smoothstep(0.62, 1.35, p.y));
+  return mix(c, uInner, clamp(vInner, 0.0, 1.0));
+}`;
+
+let three = null; // API verso la UI
+
+function init3D() {
+  const stage = $('#stage'), canvas = $('#gl'), hotLayer = $('#hotspots');
+  let renderer;
+  try {
+    renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: 'high-performance' });
+  } catch (err) {
+    $('#stageLoading').classList.add('done');
+    stage.insertAdjacentHTML('beforeend', '<div class="no3d"><p>Il tuo browser non mostra il modello 3D.<br>Puoi scegliere lo spazio dalla lista.</p></div>');
+    return;
+  }
+  renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+  renderer.outputColorSpace = THREE.SRGBColorSpace;
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 0.92;
+
+  const scene = new THREE.Scene();
+  const pmrem = new THREE.PMREMGenerator(renderer);
+  scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
+  scene.environmentIntensity = 0.55;
+
+  const camera = new THREE.PerspectiveCamera(28, 1, 0.05, 20);
+  scene.add(camera);
+  const lightTarget = new THREE.Object3D(); lightTarget.position.set(0, 1.07, 0); scene.add(lightTarget);
+  const key = new THREE.DirectionalLight(0xffffff, 2.1); key.position.set(-1.1, 1.2, 0.6); key.target = lightTarget; camera.add(key);
+  const rim = new THREE.DirectionalLight(0xd8e4ff, 1.7); rim.position.set(1.6, 2.2, -1.8); rim.target = lightTarget; scene.add(rim);
+  const rim2 = new THREE.DirectionalLight(0xffe2d2, 0.9); rim2.position.set(-1.8, 1.4, -1.2); rim2.target = lightTarget; scene.add(rim2);
+  scene.add(new THREE.HemisphereLight(0xffffff, 0x3a4450, 0.55));
+
+  // ombra a terra
+  const sc = document.createElement('canvas'); sc.width = sc.height = 256;
+  const sg = sc.getContext('2d'); const grd = sg.createRadialGradient(128, 128, 0, 128, 128, 128);
+  grd.addColorStop(0, 'rgba(0,0,0,0.42)'); grd.addColorStop(0.55, 'rgba(0,0,0,0.12)'); grd.addColorStop(1, 'rgba(0,0,0,0)');
+  sg.fillStyle = grd; sg.fillRect(0, 0, 256, 256);
+  const shadow = new THREE.Mesh(new THREE.PlaneGeometry(0.62, 0.36), new THREE.MeshBasicMaterial({ map: new THREE.CanvasTexture(sc), transparent: true, depthWrite: false }));
+  shadow.rotation.x = -Math.PI / 2; shadow.position.y = 0.535; shadow.renderOrder = -1; scene.add(shadow);
+
+  const controls = new OrbitControls(camera, canvas);
+  controls.enableZoom = false; controls.enablePan = false; controls.enableDamping = true; controls.dampingFactor = 0.08;
+  controls.rotateSpeed = 0.75; controls.minPolarAngle = 0.95; controls.maxPolarAngle = 2.05;
+  controls.autoRotate = !prefersReduced; controls.autoRotateSpeed = 1.1;
+  controls.target.set(0, 1.075, 0);
+
+  const view = { az: 0.55, polar: 1.47, dist: 2.4, ty: 1.075, fit: 2.4, zoom: false };
+  const placeCam = () => {
+    const s = Math.sin(view.polar);
+    controls.target.set(0, view.ty, 0);
+    camera.position.set(view.dist * s * Math.sin(view.az), view.ty + view.dist * Math.cos(view.polar), view.dist * s * Math.cos(view.az));
+    camera.lookAt(controls.target);
+  };
+  const readCam = () => {
+    const o = camera.position.clone().sub(controls.target);
+    const d = o.length();
+    return { az: Math.atan2(o.x, o.z), polar: Math.acos(Math.min(1, Math.max(-1, o.y / d))), dist: d, ty: controls.target.y };
+  };
+  function resize() {
+    const w = stage.clientWidth, hh = stage.clientHeight;
+    renderer.setSize(w, hh, false);
+    camera.aspect = w / hh; camera.updateProjectionMatrix();
+    const tf = Math.tan(THREE.MathUtils.degToRad(camera.fov / 2));
+    view.fit = Math.max(0.53 / tf, 0.40 / (tf * camera.aspect)) + 0.06;
+    if (!tween) { const c = readCam(); Object.assign(view, c); view.dist = view.zoom ? view.fit * 0.58 : view.fit; placeCam(); }
+  }
+
+  // tween della camera
+  let tween = null;
+  const ease = (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
+  function goTo(to, dur = 900) {
+    const from = readCam();
+    let daz = (to.az ?? from.az) - from.az; daz = Math.atan2(Math.sin(daz), Math.cos(daz));
+    tween = { from, to: { az: from.az + daz, polar: to.polar ?? from.polar, dist: to.dist ?? from.dist, ty: to.ty ?? from.ty }, t0: performance.now(), dur: prefersReduced ? 1 : dur };
+    setSpin(false);
+  }
+  controls.addEventListener('start', () => { tween = null; setSpin(false); });
+
+  const spinBtn = $('#spinBtn'), zoomBtn = $('#zoomBtn');
+  function setSpin(on) { controls.autoRotate = on; spinBtn.setAttribute('aria-pressed', String(on)); }
+  setSpin(!prefersReduced);
+  spinBtn.addEventListener('click', () => setSpin(!controls.autoRotate));
+  zoomBtn.addEventListener('click', () => {
+    view.zoom = !view.zoom; zoomBtn.setAttribute('aria-pressed', String(view.zoom));
+    goTo({ dist: view.zoom ? view.fit * 0.58 : view.fit, ty: view.zoom ? readCam().ty : 1.075 }, 700);
+  });
+  const views = { front: 0, side: Math.PI / 2, back: Math.PI };
+  document.querySelectorAll('[data-view]').forEach((b) => b.addEventListener('click', () => {
+    goTo({ az: views[b.dataset.view], polar: 1.47 });
+    markView(b.dataset.view);
+  }));
+  function markView(name) { document.querySelectorAll('[data-view]').forEach((x) => x.classList.toggle('on', x.dataset.view === name)); }
+
+  // ---- body ----
+  const U = {
+    uBase: { value: new THREE.Color(CONFIG.suit.base) }, uPanel: { value: new THREE.Color(CONFIG.suit.panel) },
+    uAccent: { value: new THREE.Color(CONFIG.suit.accent) }, uInner: { value: new THREE.Color(CONFIG.suit.inner) }, uZip: { value: new THREE.Color(CONFIG.suit.zip) },
+  };
+  const fabric = { roughness: 0.6, metalness: 0, sheen: 0.3, sheenRoughness: 0.45, sheenColor: new THREE.Color(0xdfe6f0) };
+  const bodyMat = new THREE.MeshPhysicalMaterial({ color: 0xffffff, ...fabric });
+  bodyMat.onBeforeCompile = (sh) => {
+    Object.assign(sh.uniforms, U);
+    sh.vertexShader = sh.vertexShader
+      .replace('#include <common>', '#include <common>\nattribute float aInner;\nattribute float aHem;\nvarying vec3 vObjPos;\nvarying float vInner;\nvarying float vHem;')
+      .replace('#include <begin_vertex>', '#include <begin_vertex>\nvObjPos = position; vInner = aInner; vHem = aHem;');
+    sh.fragmentShader = sh.fragmentShader
+      .replace('#include <common>', '#include <common>\n' + SUIT_GLSL)
+      .replace('#include <color_fragment>', '#include <color_fragment>\ndiffuseColor.rgb = suitColor();');
+  };
+
+  let body = null;
+  const slotsGL = new Map();
+  const tmpV = new THREE.Vector3(), viewDir = new THREE.Vector3();
+
+  function trace(at, dir) {
+    let x = at[0] + dir.x * 0.35, y = at[1] + dir.y * 0.35, z = at[2] + dir.z * 0.35;
+    for (let i = 0; i < 200; i++) {
+      const f = shellF(x, y, z);
+      if (f < 2e-4) break;
+      x -= dir.x * f * 0.9; y -= dir.y * f * 0.9; z -= dir.z * f * 0.9;
+    }
+    return new THREE.Vector3(x, y, z);
+  }
+
+  function slotFrame(s) {
+    let at = s.at, dir = s.dir, up = s.up;
+    if (s.arm) {
+      const sd = s.arm, t = 0.078;
+      at = [sd * (J[0] + ADX * t), J[1] + ADY * t, J[2]];
+      dir = [sd * Math.cos(ARM_A), Math.sin(ARM_A), 0];
+      up = [-sd * ADX, -ADY, 0];
+    }
+    const Z = new THREE.Vector3(...dir).normalize();
+    const X = new THREE.Vector3().crossVectors(new THREE.Vector3(...up), Z).normalize();
+    const Y = new THREE.Vector3().crossVectors(Z, X);
+    const Cc = trace(at, Z);
+    return { X, Y, Z, C: Cc };
+  }
+
+  function decalGeometry(fr, w, h, depth) {
+    const { pos: P, nor: N, outer: I } = body;
+    const { X, Y, Z, C: Cc } = fr;
+    const hw = w / 2 + 0.004, hh = h / 2 + 0.004;
+    const op = [], on = [], ouv = [];
+    const lx = [0, 0, 0], ly = [0, 0, 0];
+    for (let t = 0; t < I.length; t += 3) {
+      let ok = true, aR = true, aL = true, aU = true, aD = true, nd = 0;
+      for (let k = 0; k < 3; k++) {
+        const vi = I[t + k] * 3;
+        const dx = P[vi] - Cc.x, dy = P[vi + 1] - Cc.y, dz = P[vi + 2] - Cc.z;
+        const a = dx * X.x + dy * X.y + dz * X.z, b = dx * Y.x + dy * Y.y + dz * Y.z, c = dx * Z.x + dy * Z.y + dz * Z.z;
+        lx[k] = a; ly[k] = b;
+        if (a <= hw) aR = false; if (a >= -hw) aL = false; if (b <= hh) aU = false; if (b >= -hh) aD = false;
+        if (c > depth || c < -depth) ok = false;
+        nd += N[vi] * Z.x + N[vi + 1] * Z.y + N[vi + 2] * Z.z;
+      }
+      if (!ok || aR || aL || aU || aD || nd < 0.6) continue;
+      for (let k = 0; k < 3; k++) {
+        const vi = I[t + k] * 3;
+        op.push(P[vi] + N[vi] * 0.0007, P[vi + 1] + N[vi + 1] * 0.0007, P[vi + 2] + N[vi + 2] * 0.0007);
+        on.push(N[vi], N[vi + 1], N[vi + 2]);
+        ouv.push(lx[k] / w + 0.5, ly[k] / h + 0.5);
+      }
+    }
+    const g = new THREE.BufferGeometry();
+    g.setAttribute('position', new THREE.Float32BufferAttribute(op, 3));
+    g.setAttribute('normal', new THREE.Float32BufferAttribute(on, 3));
+    g.setAttribute('uv', new THREE.Float32BufferAttribute(ouv, 2));
+    g.computeBoundingSphere();
+    return g;
+  }
+
+  const maxAniso = renderer.capabilities.getMaxAnisotropy();
+  function makeSlot(s) {
+    const fr = slotFrame(s);
+    const w = s.w / 100, h = s.h / 100;
+    const geo = decalGeometry(fr, w, h, s.zone === 'Fianchi' ? 0.06 : 0.05);
+    const long = 900, ratio = w / h;
+    const cw = ratio >= 1 ? long : Math.max(128, Math.round(long * ratio));
+    const ch = ratio >= 1 ? Math.max(128, Math.round(long / ratio)) : long;
+    const cnv = document.createElement('canvas'); cnv.width = cw; cnv.height = ch;
+    const tex = new THREE.CanvasTexture(cnv);
+    tex.colorSpace = THREE.SRGBColorSpace; tex.anisotropy = maxAniso;
+    tex.wrapS = tex.wrapT = THREE.ClampToEdgeWrapping;
+    const mat = new THREE.MeshPhysicalMaterial({ map: tex, transparent: true, depthWrite: false, polygonOffset: true, polygonOffsetFactor: -2, polygonOffsetUnits: -4, ...fabric, sheen: 0.3 });
+    const mesh = new THREE.Mesh(geo, mat); mesh.renderOrder = 2; mesh.userData.id = s.id;
+    scene.add(mesh);
+    const anchor = fr.C.clone().addScaledVector(fr.Z, 0.016);
+    let el = null;
+    const st = { s, fr, mesh, cnv, ctx: cnv.getContext('2d'), tex, anchor, el };
+    slotsGL.set(s.id, st);
+    syncHotspot(st);
+    draw(st);
+  }
+
+  // scritta fissa stampata sul body (il nome dietro, sopra lo sponsor della schiena)
+  let printDraw = null;
+  function makePrint(p) {
+    const fr = slotFrame(p);
+    const w = p.w / 100, h = p.h / 100;
+    const cnv = document.createElement('canvas'); cnv.width = 1024; cnv.height = Math.round(1024 * h / w);
+    const tex = new THREE.CanvasTexture(cnv);
+    tex.colorSpace = THREE.SRGBColorSpace; tex.anisotropy = maxAniso;
+    const mat = new THREE.MeshPhysicalMaterial({ map: tex, transparent: true, depthWrite: false, polygonOffset: true, polygonOffsetFactor: -2, polygonOffsetUnits: -4, ...fabric, sheen: 0.3 });
+    const mesh = new THREE.Mesh(decalGeometry(fr, w, h, 0.05), mat); mesh.renderOrder = 2;
+    scene.add(mesh);
+    printDraw = () => {
+      const ctx = cnv.getContext('2d'), W = cnv.width, H = cnv.height, text = p.text.toUpperCase();
+      const track = 0.08; // spaziatura tra le lettere, in em
+      const width = (f) => [...text].reduce((t, ch) => t + ctx.measureText(ch).width, 0) + f * track * (text.length - 1);
+      ctx.clearRect(0, 0, W, H);
+      let fs = H * 0.9;
+      ctx.font = `900 ${fs}px ${DISP}`;
+      const tw = width(fs);
+      if (tw > W * 0.94) { fs *= W * 0.94 / tw; ctx.font = `900 ${fs}px ${DISP}`; }
+      let x = (W - width(fs)) / 2;
+      ctx.fillStyle = rgba(inkOf({ zone: 'Retro' }), 1); ctx.textBaseline = 'middle';
+      for (const ch of text) { ctx.fillText(ch, x, H / 2 + fs * 0.04); x += ctx.measureText(ch).width + fs * track; }
+      tex.needsUpdate = true;
+    };
+    printDraw();
+  }
+
+  function syncHotspot(st) {
+    const s = st.s;
+    if (isTaken(s)) { if (st.el) { st.el.remove(); st.el = null; } return; }
+    if (st.el) return;
+    const el = document.createElement('button');
+    el.type = 'button'; el.className = 'hotspot off'; el.dataset.id = s.id;
+    el.setAttribute('aria-label', `Spazio ${pad2(s.n)}, ${s.name}, ${money(s.price)}`);
+    el.innerHTML = `${ICON_PLUS}<span class="tip">${esc(s.name)}<b>${money(s.price)}</b></span>`;
+    el.addEventListener('click', () => ui.pick(s.id, { fromStage: true }));
+    el.addEventListener('pointerenter', () => ui.hover(s.id));
+    el.addEventListener('pointerleave', () => ui.hover(null));
+    el.addEventListener('focus', () => { ui.hover(s.id); });
+    el.addEventListener('blur', () => ui.hover(null));
+    hotLayer.appendChild(el);
+    st.el = el;
+  }
+
+  // ---- disegno delle decal ----
+  const DISP = '"Big Shoulders Display", "Arial Narrow", Impact, sans-serif';
+  function rr(ctx, x, y, w, h, r) { ctx.beginPath(); ctx.roundRect ? ctx.roundRect(x, y, w, h, r) : ctx.rect(x, y, w, h); }
+  function fitText(ctx, text, weight, maxW, maxH) {
+    let fs = maxH;
+    ctx.font = `${weight} ${fs}px ${DISP}`;
+    const tw = ctx.measureText(text).width;
+    if (tw > maxW) fs = fs * maxW / tw;
+    ctx.font = `${weight} ${fs}px ${DISP}`;
+    return fs;
+  }
+  // colore di stampa: scuro sul tessuto chiaro, bianco sul tessuto scuro (es. pannelli dei fianchi)
+  const hexRGB = (hx) => { const n = parseInt(hx.slice(1), 16); return [(n >> 16) & 255, (n >> 8) & 255, n & 255]; };
+  const lum = (c) => (0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2]) / 255;
+  const rgba = (c, a) => `rgba(${c[0]},${c[1]},${c[2]},${a})`;
+  function inkOf(s) {
+    const ground = hexRGB(s.zone === 'Fianchi' ? CONFIG.suit.panel : CONFIG.suit.base);
+    if (lum(ground) < 0.5) return [255, 255, 255];
+    const p = hexRGB(CONFIG.suit.panel);
+    return lum(p) < 0.4 ? p : [17, 24, 39];
+  }
+  function drawLogo(ctx, img, x, y, w, h, mode, ink) {
+    const iw = img.naturalWidth || img.width || 300, ih = img.naturalHeight || img.height || 150;
+    const k = Math.min(w / iw, h / ih), dw = Math.max(1, iw * k), dh = Math.max(1, ih * k);
+    const dx = x + (w - dw) / 2, dy = y + (h - dh) / 2;
+    if (mode === 'mono') {
+      const off = document.createElement('canvas'); off.width = Math.ceil(dw); off.height = Math.ceil(dh);
+      const o = off.getContext('2d'); o.drawImage(img, 0, 0, dw, dh);
+      o.globalCompositeOperation = 'source-in'; o.fillStyle = rgba(ink, 1); o.fillRect(0, 0, dw, dh);
+      ctx.drawImage(off, dx, dy);
+    } else ctx.drawImage(img, dx, dy, dw, dh);
+  }
+  function draw(st) {
+    const { s, ctx, cnv } = st, W = cnv.width, H = cnv.height;
+    const sel = state.selected === s.id, hot = state.hover === s.id;
+    const ink = inkOf(s);
+    ctx.clearRect(0, 0, W, H);
+    const pxcm = W / s.w; // pixel per centimetro: tratteggi e linee in misura reale
+    const m = 4, lw = Math.max(3, Math.min(pxcm * 0.2, Math.min(W, H) * 0.035));
+    const bx = m + lw / 2, by = m + lw / 2, bw = W - 2 * m - lw, bh = H - 2 * m - lw;
+    const rad = Math.min(W, H) * 0.12;
+    if (s.sold) {
+      if (s.sold.img) { drawLogo(ctx, s.sold.img, W * 0.08, H * 0.12, W * 0.84, H * 0.76, s.sold.mode || 'orig', ink); }
+      else {
+        ctx.fillStyle = rgba(ink, 1); ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+        fitText(ctx, s.sold.name.toUpperCase(), 900, W * 0.84, H * 0.78);
+        ctx.fillText(s.sold.name.toUpperCase(), W / 2, H / 2 + H * 0.03);
+      }
+      if (sel || hot) { ctx.setLineDash([]); ctx.lineWidth = lw * 0.6; ctx.strokeStyle = rgba(ink, 0.5); rr(ctx, bx, by, bw, bh, rad); ctx.stroke(); }
+    } else if (state.logo && (sel || hot)) {
+      drawLogo(ctx, state.logo.img, W * 0.08, H * 0.12, W * 0.84, H * 0.76, state.logoMode, ink);
+      ctx.setLineDash([pxcm * 0.9, pxcm * 0.6]); ctx.lineWidth = lw * 0.6; ctx.strokeStyle = rgba(ink, 0.35);
+      rr(ctx, bx, by, bw, bh, rad); ctx.stroke();
+    } else {
+      // area libera: tratteggio "riservato" + misura; il + sta al centro
+      const on = sel || hot;
+      ctx.save(); rr(ctx, bx, by, bw, bh, rad); ctx.clip();
+      ctx.fillStyle = on ? (sel ? 'rgba(255,91,31,0.32)' : 'rgba(255,91,31,0.2)') : rgba(ink, 0.05);
+      ctx.fillRect(0, 0, W, H);
+      ctx.strokeStyle = rgba(ink, on ? 0.24 : 0.13); ctx.lineWidth = lw * 0.55;
+      const step = pxcm * 0.9;
+      for (let x = -H; x < W + H; x += step) { ctx.beginPath(); ctx.moveTo(x, H); ctx.lineTo(x + H, 0); ctx.stroke(); }
+      ctx.restore();
+      ctx.setLineDash([pxcm * 0.9, pxcm * 0.6]); ctx.lineWidth = lw;
+      ctx.strokeStyle = on ? CONFIG.suit.accent : rgba(ink, 0.6);
+      rr(ctx, bx, by, bw, bh, rad); ctx.stroke();
+      ctx.setLineDash([]);
+      if (s.w * s.h >= 150) {
+        const label = `${num(s.w)} × ${num(s.h)} CM`;
+        const wide = W / H > 4;
+        const fs = wide ? H * 0.34 : H * 0.12;
+        ctx.font = `800 ${fs}px ${DISP}`; ctx.fillStyle = rgba(ink, on ? 0.95 : 0.7);
+        ctx.textAlign = 'left'; ctx.textBaseline = wide ? 'middle' : 'alphabetic';
+        if (wide) ctx.fillText(label, bx + lw * 2.5, H / 2 + fs * 0.05);
+        else ctx.fillText(label, bx + lw * 2.5, by + bh - lw * 2.2);
+      }
+    }
+    st.tex.needsUpdate = true;
+  }
+
+  // ---- interazione sul canvas ----
+  const ray = new THREE.Raycaster(), ndc = new THREE.Vector2();
+  function pickAt(ev) {
+    const r = canvas.getBoundingClientRect();
+    ndc.set(((ev.clientX - r.left) / r.width) * 2 - 1, -((ev.clientY - r.top) / r.height) * 2 + 1);
+    ray.setFromCamera(ndc, camera);
+    const hits = ray.intersectObjects([...slotsGL.values()].map((x) => x.mesh), false);
+    for (const hit of hits) {
+      const st = slotsGL.get(hit.object.userData.id);
+      viewDir.subVectors(camera.position, hit.point).normalize();
+      if (viewDir.dot(st.fr.Z) > 0.12) return st.s.id;
+    }
+    return null;
+  }
+  let down = null, canvasHover = null;
+  canvas.addEventListener('pointerdown', (e) => { down = { x: e.clientX, y: e.clientY }; });
+  canvas.addEventListener('pointerup', (e) => {
+    if (!down) return;
+    const moved = Math.hypot(e.clientX - down.x, e.clientY - down.y); down = null;
+    if (moved > 6) return;
+    const id = pickAt(e);
+    if (id) ui.pick(id, { fromStage: true });
+  });
+  canvas.addEventListener('pointermove', (e) => {
+    if (e.pointerType !== 'mouse' || e.buttons) return;
+    const id = pickAt(e);
+    canvas.classList.toggle('pointing', !!id);
+    if (id !== canvasHover) { canvasHover = id; ui.hover(id); }
+  });
+  canvas.addEventListener('pointerleave', () => { if (canvasHover) { canvasHover = null; ui.hover(null); } canvas.classList.remove('pointing'); });
+
+  // ---- loop ----
+  let running = true;
+  function tick(now) {
+    if (tween) {
+      const k = Math.min(1, (now - tween.t0) / tween.dur), e2 = ease(k);
+      const f = tween.from, t = tween.to;
+      view.az = f.az + (t.az - f.az) * e2; view.polar = f.polar + (t.polar - f.polar) * e2;
+      view.dist = f.dist + (t.dist - f.dist) * e2; view.ty = f.ty + (t.ty - f.ty) * e2;
+      placeCam();
+      if (k >= 1) tween = null;
+    } else controls.update();
+    camera.updateMatrixWorld();
+    if (body) updateHotspots();
+    renderer.render(scene, camera);
+  }
+  function updateHotspots() {
+    const W = stage.clientWidth, H = stage.clientHeight;
+    for (const st of slotsGL.values()) {
+      if (!st.el) continue;
+      tmpV.copy(st.anchor).project(camera);
+      const x = (tmpV.x * 0.5 + 0.5) * W, y = (-tmpV.y * 0.5 + 0.5) * H;
+      viewDir.subVectors(camera.position, st.anchor).normalize();
+      const f = viewDir.dot(st.fr.Z);
+      const vis = Math.max(0, Math.min(1, (f - 0.2) / 0.22));
+      st.el.style.transform = `translate3d(${x.toFixed(1)}px,${y.toFixed(1)}px,0)`;
+      st.el.style.opacity = vis.toFixed(2);
+      const off = vis < 0.35;
+      if (off !== st.el.classList.contains('off')) st.el.classList.toggle('off', off);
+    }
+  }
+  new ResizeObserver(resize).observe(stage);
+  resize();
+  placeCam();
+  new IntersectionObserver(([en]) => {
+    const vis = en.isIntersecting;
+    if (vis && !running) { renderer.setAnimationLoop(tick); running = true; }
+    if (!vis && running) { renderer.setAnimationLoop(null); running = false; }
+  }).observe(stage);
+  renderer.setAnimationLoop(tick);
+
+  // costruzione (dopo il primo frame, così il loader è visibile)
+  setTimeout(() => {
+    const t0 = performance.now();
+    body = buildBody();
+    const mesh = new THREE.Mesh(body.geo, bodyMat);
+    scene.add(mesh);
+    CONFIG.slots.forEach(makeSlot);
+    if (CONFIG.backName && CONFIG.backName.text) makePrint(CONFIG.backName);
+    console.info(`[body] ${body.geo.index.count / 3} triangoli in ${Math.round(performance.now() - t0)} ms`);
+    $('#stageLoading').classList.add('done');
+    document.fonts.ready.then(() => { slotsGL.forEach(draw); if (printDraw) printDraw(); });
+  }, 60);
+
+  three = {
+    redraw(id) { const st = slotsGL.get(id); if (st) draw(st); },
+    redrawAll() { slotsGL.forEach(draw); },
+    refreshSlot(id) { const st = slotsGL.get(id); if (st) { syncHotspot(st); draw(st); } },
+    markHot(id) { slotsGL.forEach((st) => st.el && st.el.classList.toggle('is-hot', st.s.id === id)); },
+    markSel(id) { slotsGL.forEach((st) => st.el && st.el.classList.toggle('is-sel', st.s.id === id)); },
+    focus(id) {
+      const st = slotsGL.get(id); if (!st) return;
+      const Z = st.fr.Z;
+      view.zoom = true; zoomBtn.setAttribute('aria-pressed', 'true');
+      goTo({ az: Math.atan2(Z.x, Z.z), polar: Z.y > 0.2 ? 1.32 : 1.5, dist: view.fit * 0.6, ty: Math.min(1.3, Math.max(0.92, st.fr.C.y)) });
+      markView(Math.abs(Z.z) > 0.7 ? (Z.z > 0 ? 'front' : 'back') : 'side');
+    },
+    overview() { view.zoom = false; zoomBtn.setAttribute('aria-pressed', 'false'); goTo({ dist: view.fit, ty: 1.075, polar: 1.47 }, 800); },
+  };
+}
+
+/* =====================================================================
+   UI — pannello a pettorale
+   ===================================================================== */
+const panel = $('#panel');
+const narrow = () => matchMedia('(max-width: 980px)').matches;
+
+const ui = {
+  hover(id) {
+    if (state.hover === id) return;
+    const prev = state.hover; state.hover = id;
+    if (three) { if (prev) three.redraw(prev); if (id) three.redraw(id); three.markHot(id); }
+    panel.querySelectorAll('.row').forEach((r) => r.classList.toggle('is-hot', r.dataset.id === id));
+  },
+  pick(id, opts = {}) {
+    const prev = state.selected;
+    state.selected = id; state.step = 'detail';
+    if (three) { if (prev && prev !== id) three.redraw(prev); three.redraw(id); three.markSel(id); three.focus(id); }
+    renderPanel();
+    if (opts.fromStage && narrow()) panel.scrollIntoView({ behavior: prefersReduced ? 'auto' : 'smooth', block: 'start' });
+  },
+  list() {
+    const prev = state.selected;
+    state.selected = null; state.step = 'list';
+    if (three) { if (prev) three.redraw(prev); three.markSel(null); three.overview(); }
+    renderPanel();
+  },
+};
+
+function logoBlock(compact) {
+  if (state.logo) {
+    return `<div class="try has">
+      <div class="try-thumb"><img src="${state.logo.src}" alt=""></div>
+      <div class="try-text"><strong>${esc(state.logo.name)}</strong><span>${compact ? 'Lo vedi sul body nello spazio scelto.' : 'Passa sugli spazi o sui + per vederlo sul body.'}</span></div>
+      <button type="button" class="linkbtn" data-act="remove-logo">Rimuovi</button>
+    </div>`;
+  }
+  return `<div class="try">
+    <div class="try-thumb">${ICON_UP}</div>
+    <div class="try-text"><strong>Prova il tuo logo</strong><span>Caricalo e guardalo sul body prima di scegliere.</span></div>
+    <label class="btn ghost small filebtn">Carica<input type="file" id="logoTry" accept="image/png,image/svg+xml,image/jpeg,image/webp" aria-label="Carica il tuo logo"></label>
+  </div>`;
+}
+
+function rowHTML(s) {
+  const right = s.sold
+    ? (s.sold.pending ? '<span class="pill held"><span class="d"></span>Prenotato</span>' : `<span class="pill"><span class="d"></span>Venduto${s.sold.demo ? ' · esempio' : ''}</span>`)
+    : `<span class="row-price">${money(s.price)}</span>`;
+  return `<button type="button" class="row${s.sold ? ' is-sold' : ''}" data-act="pick" data-id="${s.id}">
+    <span class="row-num">${pad2(s.n)}</span>
+    <span class="row-main"><span class="row-name">${esc(s.name)}</span><span class="row-size">${size(s)}</span></span>
+    ${right}
+  </button>`;
+}
+
+function viewList() {
+  const zones = ['Fronte', 'Spalle', 'Fianchi', 'Retro'];
+  const free = CONFIG.slots.filter((s) => !s.sold).length;
+  return `<div class="p-head">
+      <p class="eyebrow">${free} spazi liberi su ${CONFIG.slots.length}</p>
+      <h2>Scegli dove mettere il tuo logo</h2>
+    </div>
+    ${logoBlock(false)}
+    <div class="groups">
+      ${zones.map((z) => `<div class="group"><h4>${z}</h4><div class="rows">${CONFIG.slots.filter((s) => s.zone === z).sort((a, b) => a.n - b.n).map(rowHTML).join('')}</div></div>`).join('')}
+    </div>`;
+}
+
+function bibHTML(s) {
+  return `<div class="bib" aria-label="Spazio ${pad2(s.n)}, ${esc(s.name)}">
+    <div class="bib-top"><span>IRONMAN ${esc(CONFIG.race.place)} ${CONFIG.race.date.slice(0, 4)}</span><span>${esc(s.zone)}</span></div>
+    <div class="bib-num">${pad2(s.n)}</div>
+    <div class="bib-name">${esc(s.name)}</div>
+    <div class="bib-strip"><span>${size(s)}</span><span>${s.sold ? (s.sold.pending ? 'Prenotato' : 'Venduto') : money(s.price)}</span></div>
+  </div>`;
+}
+
+function viewDetail(s) {
+  const perks = s.perks.map((p) => `<li>${ICON_CHECK}<span>${esc(p)}</span></li>`).join('');
+  let buy;
+  if (s.sold) {
+    const firstFree = CONFIG.slots.find((x) => !x.sold);
+    buy = `<div class="soldbox"><span>${s.sold.pending ? 'Questo spazio è prenotato' : 'Questo spazio è già di'} <b>${esc(s.sold.name)}</b>${s.sold.demo ? ' (sponsor di esempio)' : ''}.</span>
+      ${firstFree ? `<button type="button" class="btn ghost small" data-act="pick" data-id="${firstFree.id}">Vedi uno spazio libero</button>` : ''}</div>`;
+  } else {
+    buy = `<div class="buy"><div class="price"><small>Prezzo</small>${money(s.price)}</div>
+      <button type="button" class="btn primary" data-act="reserve">Prenota questo spazio</button></div>`;
+  }
+  return `<button type="button" class="linkbtn" data-act="back">${ICON_BACK}Tutti gli spazi</button>
+    ${bibHTML(s)}
+    <p class="desc">${esc(s.desc)}</p>
+    <ul class="perks">${perks}</ul>
+    <dl class="specs">
+      <div><dt>Misura max</dt><dd>${size(s)}</dd></div>
+      <div><dt>Posizione</dt><dd>${esc(s.zone)}</dd></div>
+      <div><dt>Stampa</dt><dd>Sublimazione</dd></div>
+    </dl>
+    ${s.sold ? '' : logoBlock(true)}
+    ${buy}`;
+}
+
+function viewForm(s) {
+  const f = state.form;
+  return `<button type="button" class="linkbtn" data-act="detail">${ICON_BACK}Spazio ${pad2(s.n)} · ${esc(s.name)}</button>
+    <div class="p-head"><p class="eyebrow">Prenotazione · ${money(s.price)}</p><h3>I dati dello sponsor</h3></div>
+    <form class="form" id="sponsorForm" novalidate>
+      <div class="field"><label for="f-company">Azienda</label><input type="text" id="f-company" autocomplete="organization" value="${esc(f.company)}" required></div>
+      <div class="two">
+        <div class="field"><label for="f-name">Referente</label><input type="text" id="f-name" autocomplete="name" value="${esc(f.name)}" required></div>
+        <div class="field"><label for="f-email">Email</label><input type="email" id="f-email" autocomplete="email" value="${esc(f.email)}" required></div>
+      </div>
+      <div class="field"><label for="f-web">Sito web <span>(facoltativo)</span></label><input type="url" id="f-web" autocomplete="url" placeholder="https://" value="${esc(f.web)}"></div>
+      <div class="field">
+        <span class="lbl">Logo <span>(puoi anche mandarlo dopo)</span></span>
+        <div class="drop" id="drop">
+          <div class="try-thumb">${state.logo ? `<img src="${state.logo.src}" alt="">` : ICON_UP}</div>
+          <div class="try-text"><strong>${state.logo ? esc(state.logo.name) : 'Trascina qui il logo o scegli un file'}</strong><span>SVG, PNG trasparente o JPG. Lo vedi subito sul body.</span></div>
+          <input type="file" id="f-logo" accept="image/png,image/svg+xml,image/jpeg,image/webp" aria-label="Scegli il file del logo">
+        </div>
+      </div>
+      <div class="field">
+        <span class="lbl">Come stamparlo</span>
+        <div class="seg2" role="radiogroup" aria-label="Colore del logo">
+          <label><input type="radio" name="mode" id="f-mode-orig" value="orig" ${state.logoMode === 'orig' ? 'checked' : ''}><span class="sw"></span>Colori originali</label>
+          <label><input type="radio" name="mode" id="f-mode-mono" value="mono" ${state.logoMode === 'mono' ? 'checked' : ''}><span class="sw w"></span>Monocromatico</label>
+        </div>
+        <span class="muted" style="font-size:13px">Monocromatico: blu marino sul bianco, bianco sulle fasce blu dei fianchi.</span>
+      </div>
+      <div class="field"><label for="f-note">Note <span>(facoltativo)</span></label><textarea id="f-note" placeholder="Pantone, versione del logo, richieste particolari">${esc(f.note)}</textarea></div>
+      <button type="submit" class="btn primary block">Continua al riepilogo</button>
+      <p class="fineprint">Uso questi dati solo per gestire la sponsorizzazione. Leggi l'<a href="#privacy">informativa privacy</a>.</p>
+    </form>`;
+}
+
+function viewSummary(s) {
+  const f = state.form;
+  return `<button type="button" class="linkbtn" data-act="reserve">${ICON_BACK}Modifica i dati</button>
+    <div class="p-head"><p class="eyebrow">Riepilogo</p><h3>Controlla e conferma</h3></div>
+    <dl class="summary">
+      <div><dt>Spazio</dt><dd>${pad2(s.n)} · ${esc(s.name)}</dd></div>
+      <div><dt>Misura max</dt><dd>${size(s)}</dd></div>
+      <div><dt>Azienda</dt><dd>${esc(f.company)}</dd></div>
+      <div><dt>Referente</dt><dd>${esc(f.name)}</dd></div>
+      <div><dt>Email</dt><dd>${esc(f.email)}</dd></div>
+      <div><dt>Logo</dt><dd>${state.logo ? `${esc(state.logo.name)} · ${state.logoMode === 'mono' ? 'monocromatico' : 'colori originali'}` : 'Lo mandi dopo'}</dd></div>
+      <div class="tot"><dt>Totale</dt><dd>${money(s.price)}</dd></div>
+    </dl>
+    <p class="fineprint">La prenotazione è una richiesta: lo spazio diventa tuo con la firma del contratto e l'acconto del 50%. Saldo e logo entro il ${esc(CONFIG.race.deadline)}.</p>
+    <label class="agree"><input type="checkbox" id="f-agree"><span>Ho letto e accetto i <a href="#termini">Termini e condizioni</a> e l'<a href="#privacy">informativa privacy</a>.</span></label>
+    <p class="demo">Premendo «Invia la richiesta» mi arriva subito un'email con questi dati. Nessun pagamento online: dopo ti mando il contratto.</p>
+    <button type="button" class="btn primary block" data-act="confirm" id="confirmBtn" disabled>Invia la richiesta</button>`;
+}
+
+// richiesta di prenotazione: email precompilata verso l'atleta (nessun dato passa dal sito)
+function buildMail(s) {
+  const f = state.form;
+  const logo = state.logo
+    ? `${state.logo.name} · ${state.logoMode === 'mono' ? 'monocromatico' : 'colori originali'} (lo allego a questa email)`
+    : 'lo mando più avanti';
+  const text = [
+    `Ciao ${CONFIG.athlete.split(' ')[0]},`,
+    `vorrei prenotare uno spazio sul tuo body per l'${CONFIG.race.name} di ${CONFIG.race.place} del ${raceDay.toLocaleDateString('it-IT')}.`,
+    '',
+    `Spazio: ${pad2(s.n)} · ${s.name} (${size(s)})`,
+    `Prezzo: ${money(s.price)}`,
+    `Azienda: ${f.company}`,
+    `Referente: ${f.name}`,
+    `Email: ${f.email}`,
+    `Sito web: ${f.web || '-'}`,
+    `Logo: ${logo}`,
+    `Note: ${f.note || '-'}`,
+    '',
+    'Ho letto e accetto i Termini e condizioni pubblicati sul sito (versione del 6 novembre 2026).',
+    'Aspetto il contratto.',
+    '',
+    f.name,
+  ].join('\r\n');
+  const subject = `Prenotazione spazio ${pad2(s.n)} ${s.name} · ${f.company}`;
+  return { text, href: `mailto:${CONFIG.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(text)}` };
+}
+// invio automatico con FormSubmit (resta sulla pagina). Funziona sul sito pubblicato (GitHub Pages);
+// dove la rete è bloccata (anteprima su claude.ai) ripiega sull'email precompilata.
+async function sendRequest(s) {
+  const f = state.form;
+  const fields = {
+    _subject: `Prenotazione spazio ${pad2(s.n)} ${s.name} · ${f.company}`,
+    _template: 'table', _captcha: 'false', _honey: '',
+    _autoresponse: `Grazie! Ho ricevuto la tua richiesta per lo spazio ${pad2(s.n)} · ${s.name} sul mio body per l'${CONFIG.race.name}. Ti rispondo entro 5 giorni lavorativi con il contratto. ${CONFIG.athlete}`,
+    Spazio: `${pad2(s.n)} · ${s.name} (${size(s)})`,
+    Prezzo: money(s.price),
+    Azienda: f.company,
+    Referente: f.name,
+    email: f.email,
+    'Sito web': f.web || '-',
+    Logo: state.logo ? `${state.logo.name} · ${state.logoMode === 'mono' ? 'monocromatico' : 'colori originali'} (da mandare in risposta)` : 'lo manda più avanti',
+    Note: f.note || '-',
+    Termini: 'Letti e accettati (versione del 6 novembre 2026)',
+  };
+  const base = 'https://formsubmit.co/';
+  try {
+    const r = await fetch(base + 'ajax/' + CONFIG.formTo, {
+      method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(fields),
+    });
+    const j = await r.json().catch(() => ({}));
+    return r.ok && String(j.success) === 'true' ? 'ok' : 'fail';
+  } catch {
+    return 'fail';
+  }
+}
+
+function viewDone(s) {
+  const m = state.mail || buildMail(s);
+  const reply = `Ti rispondo a <b>${esc(state.form.email)}</b> entro 5 giorni lavorativi con il contratto${state.logo ? ': il logo me lo mandi rispondendo a quell\'email' : ''}.`;
+  const copy = `<details class="req">
+        <summary>L'email non si apre? Copia il testo</summary>
+        <p class="fineprint">Copia il testo e incollalo in una nuova email a <b>${esc(CONFIG.email)}</b>.</p>
+        <textarea readonly aria-label="Testo della richiesta">${esc(m.text)}</textarea>
+        <button type="button" class="btn ghost small" data-act="copy-req">Copia il testo</button>
+      </details>`;
+  if (state.sent === 'fail') {
+    return `<div class="done">
+      <div class="p-head"><p class="eyebrow">Spazio ${pad2(s.n)} · ${esc(s.name)}</p><h3>Non sono riuscito a inviarla</h3></div>
+      <p class="muted">L'invio automatico non è riuscito. Mandami la richiesta dalla tua email: il testo è già pronto.${state.logo ? ' Puoi allegare subito il logo.' : ''}</p>
+      <div class="done-actions">
+        <a class="btn primary" href="${esc(m.href)}" target="_blank" rel="noopener">Apri l'email già scritta</a>
+        <button type="button" class="btn ghost" data-act="back">Torna agli spazi</button>
+      </div>
+      ${copy}
+    </div>`;
+  }
+  return `<div class="done">
+      <span class="check">${ICON_CHECK}</span>
+      <div class="p-head"><p class="eyebrow">Spazio ${pad2(s.n)} · ${esc(s.name)}</p><h3>Richiesta inviata</h3></div>
+      <p class="muted">${reply}</p>
+      <div class="done-actions">
+        <button type="button" class="btn ghost" data-act="back">Torna agli spazi</button>
+      </div>
+    </div>`;
+}
+
+function renderPanel() {
+  const s = state.selected ? slotById(state.selected) : null;
+  const views = { list: viewList, detail: viewDetail, form: viewForm, summary: viewSummary, done: viewDone };
+  panel.innerHTML = (s || state.step === 'list') ? views[state.step](s) : viewList();
+  panel.querySelectorAll('.row').forEach((r) => r.classList.toggle('is-hot', r.dataset.id === state.hover));
+  if (state.step === 'form') bindForm();
+}
+
+function readForm() {
+  ['company', 'name', 'email', 'web', 'note'].forEach((k) => { const el = $('#f-' + k); if (el) state.form[k] = el.value.trim(); });
+}
+
+function bindForm() {
+  const form = $('#sponsorForm');
+  form.addEventListener('input', readForm);
+  form.addEventListener('submit', (e) => {
+    e.preventDefault(); readForm();
+    const checks = [['company', (v) => v.length > 1, 'Scrivi il nome dell\'azienda.'], ['name', (v) => v.length > 1, 'Scrivi chi segue la sponsorizzazione.'], ['email', (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v), 'Controlla l\'indirizzo email.']];
+    let firstBad = null;
+    form.querySelectorAll('.msg').forEach((m) => m.remove());
+    form.querySelectorAll('.field.err').forEach((m) => m.classList.remove('err'));
+    for (const [k, ok, msg] of checks) {
+      if (!ok(state.form[k])) {
+        const input = $('#f-' + k), field = input.closest('.field');
+        field.classList.add('err'); field.insertAdjacentHTML('beforeend', `<span class="msg">${msg}</span>`);
+        input.setAttribute('aria-invalid', 'true');
+        firstBad = firstBad || input;
+      }
+    }
+    if (firstBad) { firstBad.focus(); return; }
+    state.step = 'summary'; renderPanel();
+  });
+  const drop = $('#drop');
+  ['dragenter', 'dragover'].forEach((t) => drop.addEventListener(t, (e) => { e.preventDefault(); drop.classList.add('over'); }));
+  ['dragleave', 'drop'].forEach((t) => drop.addEventListener(t, () => drop.classList.remove('over')));
+  drop.addEventListener('drop', (e) => { e.preventDefault(); const file = e.dataTransfer.files[0]; if (file) loadLogo(file); });
+}
+
+function loadLogo(file) {
+  if (!file || !file.type.startsWith('image/')) return;
+  const reader = new FileReader();
+  reader.onload = () => {
+    const img = new Image();
+    img.onload = () => {
+      if (state.step === 'form') readForm();
+      state.logo = { img, src: reader.result, name: file.name };
+      if (three) three.redrawAll();
+      renderPanel();
+    };
+    img.src = reader.result;
+  };
+  reader.readAsDataURL(file);
+}
+
+panel.addEventListener('click', (e) => {
+  const b = e.target.closest('[data-act]'); if (!b) return;
+  const act = b.dataset.act;
+  if (act === 'pick') ui.pick(b.dataset.id);
+  else if (act === 'back') ui.list();
+  else if (act === 'detail') { readForm(); state.step = 'detail'; renderPanel(); }
+  else if (act === 'reserve') { state.step = 'form'; renderPanel(); $('#f-company')?.focus({ preventScroll: true }); }
+  else if (act === 'copy-req') {
+    const ta = panel.querySelector('.req textarea');
+    const fallback = () => { ta.focus(); ta.select(); b.textContent = 'Testo selezionato'; };
+    if (navigator.clipboard) navigator.clipboard.writeText(ta.value).then(() => (b.textContent = 'Copiato'), fallback);
+    else fallback();
+  }
+  else if (act === 'remove-logo') { state.logo = null; if (three) three.redrawAll(); renderPanel(); }
+  else if (act === 'confirm') {
+    if (!$('#f-agree')?.checked) { $('#f-agree')?.focus(); return; }
+    const s = slotById(state.selected);
+    if (b.dataset.busy) return;
+    b.dataset.busy = '1'; b.disabled = true; b.textContent = 'Invio in corso…';
+    state.mail = buildMail(s);
+    sendRequest(s).then((res) => {
+      state.sent = res;
+      if (res === 'ok') {
+        s.sold = { name: state.form.company, pending: true, img: state.logo?.img, mode: state.logoMode };
+        if (three) three.refreshSlot(s.id);
+        renderFunding();
+      }
+      state.step = 'done';
+      renderPanel();
+    });
+  }
+});
+panel.addEventListener('change', (e) => {
+  const t = e.target;
+  if (t.type === 'file') loadLogo(t.files[0]);
+  else if (t.id === 'f-agree') { const b = $('#confirmBtn'); if (b) b.disabled = !t.checked; }
+  else if (t.name === 'mode') { state.logoMode = t.value; if (three) three.redrawAll(); }
+});
+panel.addEventListener('pointerover', (e) => { const r = e.target.closest('.row'); if (r) ui.hover(r.dataset.id); });
+panel.addEventListener('pointerleave', () => ui.hover(null));
+panel.addEventListener('focusin', (e) => { const r = e.target.closest('.row'); if (r) ui.hover(r.dataset.id); });
+
+renderPanel();
+init3D();
+</script>
+
+</body></html>
