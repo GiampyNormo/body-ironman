@@ -104,10 +104,15 @@ a{color:inherit}
 
 /* Hero */
 .hero{padding-block:28px 40px}
-.hero-grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:48px;align-items:end}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);column-gap:48px;row-gap:36px;align-items:center}
+.hero-top{grid-column:1/-1}
 .hero h1{font-size:clamp(50px,8.4vw,118px);font-weight:900;margin-top:14px}
 .hero h1 .hl{color:var(--accent-text);display:block}
-.lead{font-size:clamp(17px,1.5vw,19px);max-width:56ch;margin-top:22px;color:var(--ink)}
+@media (min-width:901px){
+  .hero-top{text-align:center}
+  .hero h1{font-size:clamp(64px,6.6vw,104px);text-wrap:balance}
+}
+.lead{font-size:clamp(17px,1.5vw,19px);max-width:56ch;color:var(--ink)}
 .hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
 .hero-side{background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);display:grid}
 .hs-block{padding:20px 22px;display:grid;gap:14px}
@@ -284,6 +289,8 @@ a{color:inherit}
 .ben b small{font:500 14px var(--f-mono);text-transform:none;color:var(--muted);margin-left:6px;letter-spacing:0}
 .ben p{color:var(--muted);max-width:44ch}
 @media (max-width:700px){.ben{grid-template-columns:1fr}}
+.ben-note{display:flex;gap:10px;align-items:flex-start;margin-top:16px;font-size:15px;color:var(--muted);max-width:72ch}
+.ben-note svg{flex:none;margin-top:2px;color:var(--accent-text)}
 
 /* Race */
 .race{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border-block:2px solid var(--ink)}
@@ -380,9 +387,11 @@ a{color:inherit}
 <main id="top">
   <section class="hero">
     <div class="wrap hero-grid">
-      <div class="hero-copy">
+      <div class="hero-top">
         <p class="eyebrow">Campagna sponsor · IRONMAN Italy Emilia-Romagna 2027</p>
         <h1>Taglia il traguardo con il tuo logo. <span class="hl">Ce lo porto io.</span></h1>
+      </div>
+      <div class="hero-copy">
         <p class="lead">Il 18 settembre 2027 sono al via dell'IRONMAN Italy Emilia-Romagna a Cervia, nell'edizione del decimo anniversario. Il mio body di gara ha dieci spazi per le aziende che vogliono esserci: dalla T1 al traguardo, in ogni foto. Scegli il tuo spazio, carica il logo e guardalo sul body in 3D.</p>
         <div class="hero-cta">
           <a class="btn primary" href="#spazi">Scegli il tuo spazio</a>
@@ -475,6 +484,7 @@ a{color:inherit}
         <div><b>Mesi di racconto</b><p>La preparazione la racconto sui miei social e ogni volta che il body compare, il tuo brand viene taggato.</p></div>
         <div><b>Il tuo nome qui</b><p>Ogni sponsor ha il suo nome in questa pagina con un link al proprio sito, per almeno 12 mesi dopo la gara.</p></div>
       </div>
+      <p class="ben-note"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="12" cy="12" r="9.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 11v6M12 7.2v.1" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg><span>Quando richiedi uno spazio ti mando tutti i dettagli sulla copertura social: su quali canali, quanti contenuti e in che periodo.</span></p>
     </div>
   </section>
 
@@ -828,14 +838,14 @@ renderFunding();
 
 /* =====================================================================
    3D — il body è una superficie implicita (SDF) costruita con ellissoidi
-   e capsule, svuotata come un "ghost mannequin" e poligonizzata con
-   surface nets. I loghi sono decal proiettate sulla superficie esterna.
+   e capsule, poligonizzata con surface nets. Le aperture (collo, maniche,
+   gambe) e i bordini si tagliano pixel per pixel nello shader, così i
+   bordi restano netti. I loghi sono decal proiettate sulla superficie.
    ===================================================================== */
 const ARM_A = 24 * Math.PI / 180, ADX = Math.sin(ARM_A), ADY = -Math.cos(ARM_A);
 const J = [0.198, 1.395, -0.004];           // giunto spalla (+x)
 const ARM_LEN = 0.30, HEM_T = 0.152;        // lunghezza braccio, fine manica
 const AEX = J[0] + ADX * ARM_LEN, AEY = J[1] + ADY * ARM_LEN;
-const T_SHELL = 0.014;                      // spessore del tessuto "visibile" alle aperture
 const NECK_N = 1 / Math.sqrt(1 + 0.32 * 0.32);
 
 function ell(px, py, pz, cx, cy, cz, rx, ry, rz) {
@@ -871,41 +881,21 @@ function bodyO(x, y, z) {
   d = smin(d, capT(ax, y, z, 0.086, 0.90, 0.004, 0.104, 0.40, 0.018, 0.088, 0.062), 0.04); // coscia
   return d;
 }
-// Aperture: collo, maniche, gambe. Restituisce la regione da tenere (negativa dentro).
-const CUT = [0, 0, 0];
-function cuts(x, y, z) {
-  const ax = x < 0 ? -x : x;
-  const neck = (y + 0.32 * z - 1.505) * NECK_N;
-  const leg = 0.618 - y;
-  const px = ax - J[0], py = y - J[1], pz = z - J[2];
-  const t = px * ADX + py * ADY;
-  const qx = px - ADX * t, qy = py - ADY * t;
-  const perp = Math.sqrt(qx * qx + qy * qy + pz * pz);
-  const arm = -Math.max(perp - 0.088, HEM_T - t);
-  CUT[0] = neck; CUT[1] = leg; CUT[2] = perp < 0.075 ? (t - HEM_T) : -1;
-  return Math.max(neck, leg, arm);
-}
-function shellF(x, y, z) {
-  const o = bodyO(x, y, z);
-  const c = cuts(x, y, z);
-  return Math.max(smax(o, c, 0.006), -(o + T_SHELL));
-}
-
 function buildBody() {
-  const h = 0.005;
+  const h = 0.004;
   const X0 = -0.345, Y0 = 0.600, Z0 = -0.150;
-  const nx = Math.ceil(0.69 / h) + 1, ny = Math.ceil(0.95 / h) + 1, nz = Math.ceil(0.31 / h) + 1;
+  const nx = Math.ceil(0.69 / h) + 1, ny = Math.ceil(0.98 / h) + 1, nz = Math.ceil(0.31 / h) + 1;
   const nxy = nx * ny;
   const F = new Float32Array(nx * ny * nz);
   // campionamento a blocchi: lontano dalla superficie basta il segno
   const B = 4, thr = ((B - 1) * 0.5 * Math.sqrt(3) + 1.5) * h * 1.8;
   for (let bk = 0; bk < nz; bk += B) for (let bj = 0; bj < ny; bj += B) for (let bi = 0; bi < nx; bi += B) {
     const ei = Math.min(bi + B, nx), ej = Math.min(bj + B, ny), ek = Math.min(bk + B, nz);
-    const c = shellF(X0 + (bi + (ei - bi - 1) / 2) * h, Y0 + (bj + (ej - bj - 1) / 2) * h, Z0 + (bk + (ek - bk - 1) / 2) * h);
+    const c = bodyO(X0 + (bi + (ei - bi - 1) / 2) * h, Y0 + (bj + (ej - bj - 1) / 2) * h, Z0 + (bk + (ek - bk - 1) / 2) * h);
     if (Math.abs(c) > thr) {
       for (let k = bk; k < ek; k++) for (let j = bj; j < ej; j++) { const o = j * nx + k * nxy; for (let i = bi; i < ei; i++) F[o + i] = c; }
     } else {
-      for (let k = bk; k < ek; k++) { const z = Z0 + k * h; for (let j = bj; j < ej; j++) { const y = Y0 + j * h, o = j * nx + k * nxy; for (let i = bi; i < ei; i++) F[o + i] = shellF(X0 + i * h, y, z); } }
+      for (let k = bk; k < ek; k++) { const z = Z0 + k * h; for (let j = bj; j < ej; j++) { const y = Y0 + j * h, o = j * nx + k * nxy; for (let i = bi; i < ei; i++) F[o + i] = bodyO(X0 + i * h, y, z); } }
     }
   }
   // surface nets: un vertice per cella attraversata
@@ -943,17 +933,17 @@ function buildBody() {
     if (i > 0 && k > 0 && (F[p + nx] < 0) !== in0) quad(C(i - 1, j, k - 1), C(i - 1, j, k), C(i, j, k), C(i, j, k - 1), !in0);
     if (i > 0 && j > 0 && (F[p + nxy] < 0) !== in0) quad(C(i - 1, j - 1, k), C(i, j - 1, k), C(i, j, k), C(i - 1, j, k), !in0);
   }
-  // rifinitura: proiezione sulla superficie, normali dal gradiente, attributi del tessuto
+  // rifinitura: proiezione sulla superficie e normali dal gradiente
   const nv = P.length / 3;
-  const pos = new Float32Array(P), nor = new Float32Array(nv * 3), inner = new Float32Array(nv), hem = new Float32Array(nv);
+  const pos = new Float32Array(P), nor = new Float32Array(nv * 3);
   const e = h * 0.5;
   for (let q = 0; q < nv; q++) {
     let x = pos[q * 3], y = pos[q * 3 + 1], z = pos[q * 3 + 2];
     for (let it = 0; it < 2; it++) {
-      const f = shellF(x, y, z);
-      const gx = shellF(x + e, y, z) - shellF(x - e, y, z);
-      const gy = shellF(x, y + e, z) - shellF(x, y - e, z);
-      const gz = shellF(x, y, z + e) - shellF(x, y, z - e);
+      const f = bodyO(x, y, z);
+      const gx = bodyO(x + e, y, z) - bodyO(x - e, y, z);
+      const gy = bodyO(x, y + e, z) - bodyO(x, y - e, z);
+      const gz = bodyO(x, y, z + e) - bodyO(x, y, z - e);
       const gl = Math.hypot(gx, gy, gz) || 1;
       const nxn = gx / gl, nyn = gy / gl, nzn = gz / gl;
       const step = Math.max(-h, Math.min(h, f));
@@ -961,33 +951,42 @@ function buildBody() {
       nor[q * 3] = nxn; nor[q * 3 + 1] = nyn; nor[q * 3 + 2] = nzn;
     }
     pos[q * 3] = x; pos[q * 3 + 1] = y; pos[q * 3 + 2] = z;
-    const o = bodyO(x, y, z), c = cuts(x, y, z);
-    inner[q] = (o > -T_SHELL * 0.5 && c < -0.0025) ? 0 : 1;
-    hem[q] = Math.min(-CUT[0] / 0.010, -CUT[2] / 0.018, -CUT[1] / 0.028);
   }
   const index = new Uint32Array(I);
-  const outer = [];
-  for (let t = 0; t < index.length; t += 3) if (!inner[index[t]] && !inner[index[t + 1]] && !inner[index[t + 2]]) outer.push(index[t], index[t + 1], index[t + 2]);
   const geo = new THREE.BufferGeometry();
   geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
   geo.setAttribute('normal', new THREE.BufferAttribute(nor, 3));
-  geo.setAttribute('aInner', new THREE.BufferAttribute(inner, 1));
-  geo.setAttribute('aHem', new THREE.BufferAttribute(hem, 1));
   geo.setIndex(new THREE.BufferAttribute(index, 1));
   geo.computeBoundingSphere();
-  return { geo, pos, nor, outer: new Uint32Array(outer) };
+  return { geo, pos, nor, outer: index };
 }
 
+const glf = (v) => v.toFixed(6);
 // Colori e pannelli del body, calcolati nello shader sulla posizione locale
 const SUIT_GLSL = /* glsl */`
 uniform vec3 uBase; uniform vec3 uPanel; uniform vec3 uAccent; uniform vec3 uInner; uniform vec3 uZip;
-varying vec3 vObjPos; varying float vInner; varying float vHem;
-vec3 suitColor(){
+varying vec3 vObjPos;
+// aperture: > 0 fuori dal body (collo, maniche, gambe). hem < 1 = bordino
+float suitCut(vec3 p, out float hem){
+  float ax = abs(p.x);
+  float neck = (p.y + 0.32 * p.z - 1.505) * ${glf(NECK_N)};
+  float leg = 0.618 - p.y;
+  vec3 q = vec3(ax, p.y, p.z) - vec3(${glf(J[0])}, ${glf(J[1])}, ${glf(J[2])});
+  vec2 ad = vec2(${glf(ADX)}, ${glf(ADY)});
+  float t = dot(q.xy, ad);
+  float perp = length(vec3(q.xy - ad * t, q.z));
+  float arm = min(0.088 - perp, t - ${glf(HEM_T)});
+  float armHem = perp < 0.075 ? (${glf(HEM_T)} - t) / 0.018 : 100.0;
+  hem = min(min(-neck / 0.010, armHem), -leg / 0.028);
+  return max(max(neck, leg), arm);
+}
+vec3 suitColor(float hem){
   vec3 p = vObjPos;
   float th = atan(p.x, p.z);
   float side = abs(abs(th) - 1.5707963);
   float aa = max(fwidth(side), 1e-4) * 0.75;
-  float yMask = 1.0 - smoothstep(1.205, 1.235, p.y);
+  float ay = max(fwidth(p.y), 1e-4) * 0.75;
+  float yMask = 1.0 - smoothstep(1.22 - ay, 1.22 + ay, p.y);   // fine netta del pannello laterale
   float lat = smoothstep(0.085, 0.10, abs(p.x));
   const float W = 0.30;
   float panel = (1.0 - smoothstep(W - aa, W + aa, side)) * yMask * lat;
@@ -1000,11 +999,12 @@ vec3 suitColor(){
   float zip = (1.0 - smoothstep(0.0022 - awx, 0.0022 + awx, ax)) * smoothstep(1.355, 1.362, p.y) * front;
   float pull = (1.0 - smoothstep(0.0055 - awx, 0.0055 + awx, ax)) * step(1.458, p.y) * (1.0 - step(1.482, p.y)) * front;
   c = mix(c, uZip, max(zip, pull));
-  float ah = max(fwidth(vHem), 1e-4) * 0.75;
-  float hemBand = 1.0 - smoothstep(1.0 - ah, 1.0 + ah, vHem);
+  if (!gl_FrontFacing) c = uInner;   // l'interno, visto dalle aperture
+  float ah = max(fwidth(hem), 1e-4) * 0.75;
+  float hemBand = 1.0 - smoothstep(1.0 - ah, 1.0 + ah, hem);
   c = mix(c, uAccent, hemBand);
   c *= mix(0.93, 1.0, smoothstep(0.62, 1.35, p.y));
-  return mix(c, uInner, clamp(vInner, 0.0, 1.0));
+  return c;
 }`;
 
 let three = null; // API verso la UI
@@ -1104,15 +1104,21 @@ function init3D() {
     uAccent: { value: new THREE.Color(CONFIG.suit.accent) }, uInner: { value: new THREE.Color(CONFIG.suit.inner) }, uZip: { value: new THREE.Color(CONFIG.suit.zip) },
   };
   const fabric = { roughness: 0.6, metalness: 0, sheen: 0.3, sheenRoughness: 0.45, sheenColor: new THREE.Color(0xdfe6f0) };
-  const bodyMat = new THREE.MeshPhysicalMaterial({ color: 0xffffff, ...fabric });
+  // doppia faccia: dalle aperture si vede l'interno. alphaToCoverage smussa il bordo del taglio.
+  const bodyMat = new THREE.MeshPhysicalMaterial({ color: 0xffffff, side: THREE.DoubleSide, alphaToCoverage: true, ...fabric });
   bodyMat.onBeforeCompile = (sh) => {
     Object.assign(sh.uniforms, U);
     sh.vertexShader = sh.vertexShader
-      .replace('#include <common>', '#include <common>\nattribute float aInner;\nattribute float aHem;\nvarying vec3 vObjPos;\nvarying float vInner;\nvarying float vHem;')
-      .replace('#include <begin_vertex>', '#include <begin_vertex>\nvObjPos = position; vInner = aInner; vHem = aHem;');
+      .replace('#include <common>', '#include <common>\nvarying vec3 vObjPos;')
+      .replace('#include <begin_vertex>', '#include <begin_vertex>\nvObjPos = position;');
     sh.fragmentShader = sh.fragmentShader
       .replace('#include <common>', '#include <common>\n' + SUIT_GLSL)
-      .replace('#include <color_fragment>', '#include <color_fragment>\ndiffuseColor.rgb = suitColor();');
+      .replace('#include <color_fragment>', `#include <color_fragment>
+        float hem; float cut = suitCut(vObjPos, hem);
+        float caa = max(fwidth(cut), 1e-5) * 0.75;
+        diffuseColor.a = 1.0 - smoothstep(-caa, caa, cut);
+        if (diffuseColor.a <= 0.0) discard;
+        diffuseColor.rgb = suitColor(hem);`);
   };
 
   let body = null;
@@ -1122,7 +1128,7 @@ function init3D() {
   function trace(at, dir) {
     let x = at[0] + dir.x * 0.35, y = at[1] + dir.y * 0.35, z = at[2] + dir.z * 0.35;
     for (let i = 0; i < 200; i++) {
-      const f = shellF(x, y, z);
+      const f = bodyO(x, y, z);
       if (f < 2e-4) break;
       x -= dir.x * f * 0.9; y -= dir.y * f * 0.9; z -= dir.z * f * 0.9;
     }
@@ -1178,6 +1184,19 @@ function init3D() {
   }
 
   const maxAniso = renderer.capabilities.getMaxAnisotropy();
+  // materiale delle stampe: fuori dal riquadro (uv oltre 0..1) è trasparente, così il bordo
+  // dell'immagine non si allunga sul tessuto
+  function decalMat(tex) {
+    const mat = new THREE.MeshPhysicalMaterial({ map: tex, transparent: true, depthWrite: false, polygonOffset: true, polygonOffsetFactor: -2, polygonOffsetUnits: -4, ...fabric, sheen: 0.3 });
+    mat.onBeforeCompile = (sh) => {
+      sh.fragmentShader = sh.fragmentShader.replace('#include <map_fragment>', `#include <map_fragment>
+        vec2 du = abs(vMapUv - 0.5);
+        vec2 fw = max(fwidth(vMapUv), vec2(1e-5));
+        vec2 inq = 1.0 - smoothstep(0.5 - fw, vec2(0.5), du);
+        diffuseColor.a *= inq.x * inq.y;`);
+    };
+    return mat;
+  }
   function makeSlot(s) {
     const fr = slotFrame(s);
     const w = s.w / 100, h = s.h / 100;
@@ -1189,8 +1208,7 @@ function init3D() {
     const tex = new THREE.CanvasTexture(cnv);
     tex.colorSpace = THREE.SRGBColorSpace; tex.anisotropy = maxAniso;
     tex.wrapS = tex.wrapT = THREE.ClampToEdgeWrapping;
-    const mat = new THREE.MeshPhysicalMaterial({ map: tex, transparent: true, depthWrite: false, polygonOffset: true, polygonOffsetFactor: -2, polygonOffsetUnits: -4, ...fabric, sheen: 0.3 });
-    const mesh = new THREE.Mesh(geo, mat); mesh.renderOrder = 2; mesh.userData.id = s.id;
+    const mesh = new THREE.Mesh(geo, decalMat(tex)); mesh.renderOrder = 2; mesh.userData.id = s.id;
     scene.add(mesh);
     const anchor = fr.C.clone().addScaledVector(fr.Z, 0.016);
     let el = null;
@@ -1208,8 +1226,7 @@ function init3D() {
     const cnv = document.createElement('canvas'); cnv.width = 1024; cnv.height = Math.round(1024 * h / w);
     const tex = new THREE.CanvasTexture(cnv);
     tex.colorSpace = THREE.SRGBColorSpace; tex.anisotropy = maxAniso;
-    const mat = new THREE.MeshPhysicalMaterial({ map: tex, transparent: true, depthWrite: false, polygonOffset: true, polygonOffsetFactor: -2, polygonOffsetUnits: -4, ...fabric, sheen: 0.3 });
-    const mesh = new THREE.Mesh(decalGeometry(fr, w, h, 0.05), mat); mesh.renderOrder = 2;
+    const mesh = new THREE.Mesh(decalGeometry(fr, w, h, 0.05), decalMat(tex)); mesh.renderOrder = 2;
     scene.add(mesh);
     printDraw = () => {
       const ctx = cnv.getContext('2d'), W = cnv.width, H = cnv.height, text = p.text.toUpperCase();
@@ -1277,13 +1294,23 @@ function init3D() {
       ctx.drawImage(off, dx, dy);
     } else ctx.drawImage(img, dx, dy, dw, dh);
   }
+  // tratteggio che chiude il giro senza trattini tagliati: il passo si adatta al perimetro
+  function dashed(ctx, x, y, w, h, r, period, lineW) {
+    const perim = 2 * (w + h) - 8 * r + 2 * Math.PI * r;
+    const p = perim / Math.max(8, Math.round(perim / period));
+    ctx.setLineDash([p * 0.6, p * 0.4]); ctx.lineDashOffset = -p * 0.2; ctx.lineWidth = lineW;
+    rr(ctx, x, y, w, h, r); ctx.stroke();
+    ctx.setLineDash([]); ctx.lineDashOffset = 0;
+  }
   function draw(st) {
     const { s, ctx, cnv } = st, W = cnv.width, H = cnv.height;
     const sel = state.selected === s.id, hot = state.hover === s.id;
     const ink = inkOf(s);
     ctx.clearRect(0, 0, W, H);
-    const pxcm = W / s.w; // pixel per centimetro: tratteggi e linee in misura reale
-    const m = 4, lw = Math.max(3, Math.min(pxcm * 0.2, Math.min(W, H) * 0.035));
+    // proporzioni della schiena alta (lato corto 14 cm): sugli spazi piccoli tratteggio e linee si riducono
+    const k = Math.min(1, Math.max(0.4, Math.min(s.w, s.h) / 14));
+    const u = (W / s.w) * k; // pixel per "centimetro visivo"
+    const m = 4, lw = Math.max(3, u * 0.2);
     const bx = m + lw / 2, by = m + lw / 2, bw = W - 2 * m - lw, bh = H - 2 * m - lw;
     const rad = Math.min(W, H) * 0.12;
     if (s.sold) {
@@ -1296,8 +1323,8 @@ function init3D() {
       if (sel || hot) { ctx.setLineDash([]); ctx.lineWidth = lw * 0.6; ctx.strokeStyle = rgba(ink, 0.5); rr(ctx, bx, by, bw, bh, rad); ctx.stroke(); }
     } else if (state.logo && (sel || hot)) {
       drawLogo(ctx, state.logo.img, W * 0.08, H * 0.12, W * 0.84, H * 0.76, state.logoMode, ink);
-      ctx.setLineDash([pxcm * 0.9, pxcm * 0.6]); ctx.lineWidth = lw * 0.6; ctx.strokeStyle = rgba(ink, 0.35);
-      rr(ctx, bx, by, bw, bh, rad); ctx.stroke();
+      ctx.strokeStyle = rgba(ink, 0.35);
+      dashed(ctx, bx, by, bw, bh, rad, u * 1.5, lw * 0.6);
     } else {
       // area libera: tratteggio "riservato" + misura; il + sta al centro
       const on = sel || hot;
@@ -1305,13 +1332,11 @@ function init3D() {
       ctx.fillStyle = on ? (sel ? 'rgba(255,91,31,0.32)' : 'rgba(255,91,31,0.2)') : rgba(ink, 0.05);
       ctx.fillRect(0, 0, W, H);
       ctx.strokeStyle = rgba(ink, on ? 0.24 : 0.13); ctx.lineWidth = lw * 0.55;
-      const step = pxcm * 0.9;
+      const step = u * 0.9;
       for (let x = -H; x < W + H; x += step) { ctx.beginPath(); ctx.moveTo(x, H); ctx.lineTo(x + H, 0); ctx.stroke(); }
       ctx.restore();
-      ctx.setLineDash([pxcm * 0.9, pxcm * 0.6]); ctx.lineWidth = lw;
       ctx.strokeStyle = on ? CONFIG.suit.accent : rgba(ink, 0.6);
-      rr(ctx, bx, by, bw, bh, rad); ctx.stroke();
-      ctx.setLineDash([]);
+      dashed(ctx, bx, by, bw, bh, rad, u * 1.5, lw);
       if (s.w * s.h >= 150) {
         const label = `${num(s.w)} × ${num(s.h)} CM`;
         const wide = W / H > 4;
