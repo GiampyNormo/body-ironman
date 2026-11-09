@@ -480,7 +480,7 @@ a{color:inherit}
       </div>
       <div class="ben">
         <div><b>222,2<small>km in vista</small></b><p>Dalla T1 al traguardo il body si vede sempre: 180 km di bici e una maratona intera.</p></div>
-        <div><b>Foto e video</b><p>Ti mando le mie foto e i video della gara e degli allenamenti con il body, da usare sui tuoi canali.</p></div>
+        <div><b>Un reel tutto tuo</b><p>Ogni sponsor ha un reel Instagram dedicato. In più ti mando le mie foto e i video della gara e degli allenamenti con il body, da usare sui tuoi canali.</p></div>
         <div><b>Mesi di racconto</b><p>La preparazione la racconto sui miei social e ogni volta che il body compare, il tuo brand viene taggato.</p></div>
         <div><b>Il tuo nome qui</b><p>Ogni sponsor ha il suo nome in questa pagina con un link al proprio sito, per almeno 12 mesi dopo la gara.</p></div>
       </div>
@@ -568,7 +568,7 @@ a{color:inherit}
           <p class="eyebrow">Termini e condizioni</p>
           <h2>Le regole del gioco</h2>
         </div>
-        <p class="muted">Valgono per tutti gli spazi del body e vengono ripresi nel contratto che firmiamo. Versione del 6 novembre 2026.</p>
+        <p class="muted">Valgono per tutti gli spazi del body e vengono ripresi nel contratto che firmiamo. Versione del 9 novembre 2026.</p>
       </div>
 
       <div class="race tkey">
@@ -632,6 +632,7 @@ a{color:inherit}
           <p>L'Atleta si impegna a:</p>
           <ul>
             <li>indossare il body in Gara per tutta la frazione di bici e di corsa e al traguardo (nel nuoto può essere coperto dalla muta);</li>
+            <li>pubblicare sul proprio profilo Instagram un reel dedicato allo Sponsor, nei tempi indicati nel contratto;</li>
             <li>taggare lo Sponsor nei post dei suoi profili social in cui compare il body;</li>
             <li>mandare allo Sponsor, entro 30 giorni dalla Gara, una selezione delle proprie foto e dei propri video con il body, che lo Sponsor può usare sui suoi canali citando l'Atleta;</li>
             <li>tenere il nome e il link dello Sponsor in questa pagina per almeno 12 mesi dopo la Gara.</li>
@@ -699,7 +700,7 @@ import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
    (compare sul body, nella lista e nella sezione "Chi corre con me").
    Spazio prenotato in attesa di firma: sold: { name: 'Azienda', pending: true }.
    Per una demo puoi usare sold: { name: 'NOME', demo: true }: toglilo prima di condividere il sito.
-   Listino: 2.500 + 2×600 + 2×700 + 2×1.000 + 1.800 + 2×450 = 9.800 €.
+   Listino: 2.500 + 2×600 + 2×700 + 2×1.000 + 1.800 + 2×600 = 10.100 €.
    ===================================================================== */
 const CONFIG = {
   athlete: 'Edoardo Guttuso',
@@ -748,13 +749,13 @@ const CONFIG = {
       desc: 'Il logo più grande del body, tra le scapole, subito sotto il mio nome. È quello che vede chi è dietro di me per 222 km.',
       perks: ['Il formato più grande disponibile', 'In vista per chi segue in bici e in corsa'],
       at: [0, 1.302, -0.1], dir: [0, 0, -1], up: [0, 1, 0] },
-    { id: 'lombare-sx', n: 9, name: 'Schiena bassa sinistra', zone: 'Retro', w: 8, h: 4, price: 450,
+    { id: 'lombare-sx', n: 9, name: 'Schiena bassa sinistra', zone: 'Retro', w: 8, h: 4, price: 600,
       desc: 'Piccolo spazio sopra il pantaloncino, a sinistra. In bici è all\'altezza degli occhi di chi segue.',
-      perks: ['Ben visibile in bici, da dietro', 'Lo spazio d\'ingresso'],
+      perks: ['Ben visibile in bici, da dietro', 'Perfetto in coppia con la schiena bassa destra'],
       at: [0.068, 1.105, -0.1], dir: [0.16, 0, -1], up: [0, 1, 0] },
-    { id: 'lombare-dx', n: 10, name: 'Schiena bassa destra', zone: 'Retro', w: 8, h: 4, price: 450,
+    { id: 'lombare-dx', n: 10, name: 'Schiena bassa destra', zone: 'Retro', w: 8, h: 4, price: 600,
       desc: 'Piccolo spazio sopra il pantaloncino, a destra. In bici è all\'altezza degli occhi di chi segue.',
-      perks: ['Ben visibile in bici, da dietro', 'Lo spazio d\'ingresso'],
+      perks: ['Ben visibile in bici, da dietro', 'Perfetto in coppia con la schiena bassa sinistra'],
       at: [-0.068, 1.105, -0.1], dir: [-0.16, 0, -1], up: [0, 1, 0] },
   ],
 };
@@ -1622,7 +1623,7 @@ function buildMail(s) {
     `Logo: ${logo}`,
     `Note: ${f.note || '-'}`,
     '',
-    'Ho letto e accetto i Termini e condizioni pubblicati sul sito (versione del 6 novembre 2026).',
+    'Ho letto e accetto i Termini e condizioni pubblicati sul sito (versione del 9 novembre 2026).',
     'Aspetto il contratto.',
     '',
     f.name,
@@ -1646,7 +1647,7 @@ async function sendRequest(s) {
     'Sito web': f.web || '-',
     Logo: state.logo ? `${state.logo.name} · ${state.logoMode === 'mono' ? 'monocromatico' : 'colori originali'} (da mandare in risposta)` : 'lo manda più avanti',
     Note: f.note || '-',
-    Termini: 'Letti e accettati (versione del 6 novembre 2026)',
+    Termini: 'Letti e accettati (versione del 9 novembre 2026)',
   };
   const base = 'https://formsubmit.co/';
   try {
