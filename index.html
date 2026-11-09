@@ -1053,7 +1053,7 @@ function init3D() {
   const controls = new OrbitControls(camera, canvas);
   controls.enableZoom = false; controls.enablePan = false; controls.enableDamping = true; controls.dampingFactor = 0.08;
   controls.rotateSpeed = 0.75; controls.minPolarAngle = 0.95; controls.maxPolarAngle = 2.05;
-  controls.autoRotate = !prefersReduced; controls.autoRotateSpeed = 1.1;
+  controls.autoRotate = false; controls.autoRotateSpeed = 0;
   controls.target.set(0, 1.075, 0);
 
   const view = { az: 0.55, polar: 1.47, dist: 2.4, ty: 1.075, fit: 2.4, zoom: false };
@@ -1084,14 +1084,37 @@ function init3D() {
     const from = readCam();
     let daz = (to.az ?? from.az) - from.az; daz = Math.atan2(Math.sin(daz), Math.cos(daz));
     tween = { from, to: { az: from.az + daz, polar: to.polar ?? from.polar, dist: to.dist ?? from.dist, ty: to.ty ?? from.ty }, t0: performance.now(), dur: prefersReduced ? 1 : dur };
-    setSpin(false);
+    pauseSpin(tween.dur + SPIN_RESUME);
   }
-  controls.addEventListener('start', () => { tween = null; setSpin(false); });
+  controls.addEventListener('start', () => { tween = null; dragging = true; pauseSpin(null); });
+  controls.addEventListener('end', () => { dragging = false; pauseSpin(); });
+
+  // rotazione automatica: il body gira da solo, si ferma quando la persona lo muove (o punta uno
+  // spazio) e riparte dopo 3 s. Resta fermo mentre uno spazio è aperto nel pannello, se è stato
+  // spento con il pulsante o se il sistema chiede meno animazioni.
+  const SPIN_SPEED = 1.1, SPIN_RESUME = 3000;
+  let spinWanted = !prefersReduced, spinTimer = 0, spinT0 = 0, dragging = false;
+  function spinNow(on) {
+    if (on && !controls.autoRotate) { controls.autoRotateSpeed = 0; spinT0 = performance.now(); }
+    controls.autoRotate = on;
+  }
+  function pauseSpin(resumeIn = SPIN_RESUME) {
+    spinNow(false); clearTimeout(spinTimer);
+    if (spinWanted && resumeIn != null) spinTimer = setTimeout(resumeSpin, resumeIn);
+  }
+  function resumeSpin() {
+    if (!spinWanted || dragging || state.selected) return;
+    if (tween) { pauseSpin(); return; }
+    spinNow(true);
+  }
 
   const spinBtn = $('#spinBtn'), zoomBtn = $('#zoomBtn');
-  function setSpin(on) { controls.autoRotate = on; spinBtn.setAttribute('aria-pressed', String(on)); }
-  setSpin(!prefersReduced);
-  spinBtn.addEventListener('click', () => setSpin(!controls.autoRotate));
+  spinBtn.setAttribute('aria-pressed', String(spinWanted));
+  spinNow(spinWanted);
+  spinBtn.addEventListener('click', () => {
+    spinWanted = !spinWanted; spinBtn.setAttribute('aria-pressed', String(spinWanted));
+    clearTimeout(spinTimer); spinNow(spinWanted);
+  });
   zoomBtn.addEventListener('click', () => {
     view.zoom = !view.zoom; zoomBtn.setAttribute('aria-pressed', String(view.zoom));
     goTo({ dist: view.zoom ? view.fit * 0.58 : view.fit, ty: view.zoom ? readCam().ty : 1.075 }, 700);
@@ -1259,8 +1282,8 @@ function init3D() {
     el.setAttribute('aria-label', `Spazio ${pad2(s.n)}, ${s.name}, ${money(s.price)}`);
     el.innerHTML = `${ICON_PLUS}<span class="tip">${esc(s.name)}<b>${money(s.price)}</b></span>`;
     el.addEventListener('click', () => ui.pick(s.id, { fromStage: true }));
-    el.addEventListener('pointerenter', () => ui.hover(s.id));
-    el.addEventListener('pointerleave', () => ui.hover(null));
+    el.addEventListener('pointerenter', () => { ui.hover(s.id); pauseSpin(null); });
+    el.addEventListener('pointerleave', () => { ui.hover(null); pauseSpin(); });
     el.addEventListener('focus', () => { ui.hover(s.id); });
     el.addEventListener('blur', () => ui.hover(null));
     hotLayer.appendChild(el);
@@ -1382,9 +1405,9 @@ function init3D() {
     if (e.pointerType !== 'mouse' || e.buttons) return;
     const id = pickAt(e);
     canvas.classList.toggle('pointing', !!id);
-    if (id !== canvasHover) { canvasHover = id; ui.hover(id); }
+    if (id !== canvasHover) { canvasHover = id; ui.hover(id); if (id) pauseSpin(null); else pauseSpin(); }
   });
-  canvas.addEventListener('pointerleave', () => { if (canvasHover) { canvasHover = null; ui.hover(null); } canvas.classList.remove('pointing'); });
+  canvas.addEventListener('pointerleave', () => { if (canvasHover) { canvasHover = null; ui.hover(null); pauseSpin(); } canvas.classList.remove('pointing'); });
 
   // ---- loop ----
   let running = true;
@@ -1396,7 +1419,10 @@ function init3D() {
       view.dist = f.dist + (t.dist - f.dist) * e2; view.ty = f.ty + (t.ty - f.ty) * e2;
       placeCam();
       if (k >= 1) tween = null;
-    } else controls.update();
+    } else {
+      if (controls.autoRotate && controls.autoRotateSpeed < SPIN_SPEED) controls.autoRotateSpeed = Math.min(SPIN_SPEED, SPIN_SPEED * (now - spinT0) / 1500);
+      controls.update();
+    }
     camera.updateMatrixWorld();
     if (body) updateHotspots();
     renderer.render(scene, camera);
