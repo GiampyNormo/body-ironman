@@ -353,6 +353,8 @@ a{color:inherit}
 .agree a{color:var(--ink);text-underline-offset:3px}
 .fineprint{font-size:13px;color:var(--muted);line-height:1.45}
 .fineprint a{color:inherit;text-underline-offset:3px}
+.send-wait{text-align:center;margin-top:-4px}
+.send-wait:empty{display:none}
 .done-actions{display:flex;flex-wrap:wrap;gap:10px}
 .req{justify-self:stretch;font-size:14px;border-top:1px solid var(--line);padding-top:12px}
 .req summary{cursor:pointer;font-weight:600;color:var(--muted)}
@@ -1630,8 +1632,9 @@ function viewSummary(s) {
     </dl>
     <p class="fineprint">La prenotazione è una richiesta: lo spazio diventa tuo con la firma del contratto e l'acconto del 50%. Saldo e logo entro il ${esc(CONFIG.race.deadline)}.</p>
     <label class="agree"><input type="checkbox" id="f-agree"><span>Ho letto e accetto i <a href="#termini">Termini e condizioni</a> e l'<a href="#privacy">informativa privacy</a>.</span></label>
-    <p class="demo">Premendo «Invia la richiesta» mi arriva subito un'email con questi dati. Nessun pagamento online: dopo ti mando il contratto.</p>
-    <button type="button" class="btn primary block" data-act="confirm" id="confirmBtn" disabled>Invia la richiesta</button>`;
+    <p class="demo">Premendo «Invia la richiesta» mi arriva un'email con questi dati. Nessun pagamento online: dopo ti mando il contratto.</p>
+    <button type="button" class="btn primary block" data-act="confirm" id="confirmBtn" disabled>Invia la richiesta</button>
+    <p class="fineprint send-wait" id="sendWait" aria-live="polite"></p>`;
 }
 
 // richiesta di prenotazione: email precompilata verso l'atleta (nessun dato passa dal sito)
@@ -1680,16 +1683,23 @@ async function sendRequest(s) {
     Termini: 'Letti e accettati (versione del 9 novembre 2026)',
   };
   const base = 'https://formsubmit.co/';
+  // FormSubmit a volte risponde dopo 15-20 secondi: oltre SEND_LIMIT smettiamo di aspettare e
+  // proponiamo l'email già scritta (la richiesta può arrivare lo stesso: meglio doppia che persa)
+  const ctrl = new AbortController();
+  const timer = setTimeout(() => ctrl.abort(), SEND_LIMIT);
   try {
     const r = await fetch(base + 'ajax/' + CONFIG.formTo, {
-      method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(fields),
+      method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(fields), signal: ctrl.signal,
     });
     const j = await r.json().catch(() => ({}));
     return r.ok && String(j.success) === 'true' ? 'ok' : 'fail';
   } catch {
-    return 'fail';
+    return ctrl.signal.aborted ? 'slow' : 'fail';
+  } finally {
+    clearTimeout(timer);
   }
 }
+const SEND_LIMIT = 40000;
 
 function viewDone(s) {
   const m = state.mail || buildMail(s);
@@ -1700,6 +1710,17 @@ function viewDone(s) {
         <textarea readonly aria-label="Testo della richiesta">${esc(m.text)}</textarea>
         <button type="button" class="btn ghost small" data-act="copy-req">Copia il testo</button>
       </details>`;
+  if (state.sent === 'slow') {
+    return `<div class="done">
+      <div class="p-head"><p class="eyebrow">Spazio ${pad2(s.n)} · ${esc(s.name)}</p><h3>L'invio ci sta mettendo troppo</h3></div>
+      <p class="muted">Il servizio che mi inoltra le richieste non ha risposto in tempo. Forse la richiesta mi arriva lo stesso, ma per sicurezza mandamela anche dalla tua email: il testo è già pronto. Se mi arriva due volte, nessun problema.${state.logo ? ' Puoi allegare subito il logo.' : ''}</p>
+      <div class="done-actions">
+        <a class="btn primary" href="${esc(m.href)}" target="_blank" rel="noopener">Apri l'email già scritta</a>
+        <button type="button" class="btn ghost" data-act="back">Torna agli spazi</button>
+      </div>
+      ${copy}
+    </div>`;
+  }
   if (state.sent === 'fail') {
     return `<div class="done">
       <div class="p-head"><p class="eyebrow">Spazio ${pad2(s.n)} · ${esc(s.name)}</p><h3>Non sono riuscito a inviarla</h3></div>
@@ -1794,8 +1815,14 @@ panel.addEventListener('click', (e) => {
     const s = slotById(state.selected);
     if (b.dataset.busy) return;
     b.dataset.busy = '1'; b.disabled = true; b.textContent = 'Invio in corso…';
+    const wait = $('#sendWait');
+    const waitT = [
+      setTimeout(() => { if (wait) wait.textContent = 'Ci vogliono di solito 10-20 secondi: non chiudere la pagina.'; }, 3000),
+      setTimeout(() => { if (wait) wait.textContent = 'Ancora qualche secondo, la richiesta sta partendo…'; }, 20000),
+    ];
     state.mail = buildMail(s);
     sendRequest(s).then((res) => {
+      waitT.forEach(clearTimeout);
       state.sent = res;
       if (res === 'ok') {
         s.sold = { name: state.form.company, pending: true, img: state.logo?.img, mode: state.logoMode };
